@@ -58,6 +58,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin.aspx" />
     <Content Include="Anh\CayCanh\Cây phong thủy\kimngan.jpg" />
     <Content Include="Anh\CayCanh\Cây phong thủy\kimtien.jpg" />
     <Content Include="Anh\CayCanh\Cây phong thủy\moclan.jpg" />
@@ -121,6 +122,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TheLoaiSanPham.aspx.cs">
       <DependentUpon>TheLoaiSanPham.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
