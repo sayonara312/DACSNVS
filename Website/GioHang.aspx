@@ -8,10 +8,10 @@
 </strong>    <br />
     <table style="width: 100%; height: 365px;" class="ThongTinGioHang" >
         <tr >
-            <td  colspan="3" style="text-align: center; font-size: xx-large;">
+            <td  colspan="3" style="text-align: center; font-size: xx-large; height: 70px;">
                 <asp:Label ID="lbThongTinGH" runat="server" Font-Bold="True" Text="THÔNG TIN GIỎ HÀNG"></asp:Label>
             </td>
-            <td style="width: 309px">&nbsp;</td>
+            <td style="width: 309px; height: 70px;"></td>
         </tr>
         <tr>
             <td colspan="4">

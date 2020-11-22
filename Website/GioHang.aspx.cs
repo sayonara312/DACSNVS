@@ -17,9 +17,9 @@ namespace Website
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            
-                if (Request.QueryString["MSP"] != null)
+
+            /**/
+            if (Request.QueryString["MSP"] != null)
                 {
                     string MaSP = Request.QueryString["MSP"].ToString();
                     DataTable dt =  XL.Docbang("Select TenSP,TienSP from SANPHAM Where MaSP='" + MaSP+"'");
@@ -53,8 +53,14 @@ namespace Website
                     btnXoaGH.Visible = false;
                     btnTTM.Visible = false;
                     lbGioHang.Text = "Giỏ hàng rỗng!!!";
-                }                                       
-            
+                }
+
+
+
+
+
+
+
         }
        
         public void ThemVaoGioHang(string MaSP, string TenSP,int DonGia,int SoLuong)
@@ -144,21 +150,21 @@ namespace Website
                 {
                     if (Convert.ToString(gvGioHang.DataKeys[r.DataItemIndex].Value)==dr["MaSP"].ToString())
                     {
-                        TextBox t = (TextBox)r.Cells[4].FindControl("tbSoLuong");
+                        TextBox t = (TextBox)r.Cells[2].FindControl("tbSoLuong");
+                        
                         if (Convert.ToInt32(t.Text) <= 0)
-                        {
                             dt.Rows.Remove(dr);
-                        }
                         else
                             dr["SoLuong"] = t.Text;
                         break;
 
                     }
                 }
-               
+                Session["GioHang"] = dt;
+                Response.Redirect("~/GioHang.aspx");
+
             }
-            Session["GioHang"] = dt;
-            Response.Redirect("~/GioHang.aspx");
+            
         }
 
         protected void btnDathang_Click(object sender, EventArgs e)
