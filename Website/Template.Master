@@ -1,0 +1,214 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Template.master.cs" Inherits="Website.Template" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+
+    <title></title>
+
+    <link href="CSS.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="dropdownt.js"></script>
+   
+  
+    <style type="text/css">
+        .auto-style6 {
+            width: 372px;
+        }
+        .auto-style7 {
+            width: 501px;
+        }
+        .auto-style8 {
+            width: 654px;
+        }
+        .auto-style10 {
+            width: 372px;
+            color: #499C4D;
+        }
+        .auto-style11 {
+            color: #499C4D;
+            
+        }
+        .auto-style13 {
+            width: 196px;
+        }
+        .auto-style14 {
+            width: 100%;
+            height: 153px;
+        }
+        .auto-style39 {
+            height: 18px;
+            text-align: center;
+        }
+        .auto-style40 {
+            height: 5px;
+            text-align: center;
+        }
+        .auto-style41 {
+            height: 4px;
+            text-align: center;
+        }
+        .auto-style42 {
+            height: 15px;
+            text-align: center;
+        }
+    </style>
+    
+    
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="container">
+  <div class="header">
+    
+    
+      <table style="width:100%;">
+          <tr>
+              
+              <td class="auto-style6" rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp; <img alt="banner" class="banner" src="../../Anh/logo.png" />&nbsp;</td>
+              <td class="auto-style8" >&nbsp;</td>
+              <td>&nbsp;</td>
+          </tr>
+          <tr>
+              <td class="search" style="width: 654px" >
+              <input type="text" placeholder="Tìm kiếm..." name="search" class="auto-style7">
+              <button type="submit" ><i class="fa fa-search"></i></button>
+            
+              </td>
+              <td class="giohang" ><a href="../../GioHang.aspx"><i class="fa fa-shopping-cart"></i><span class="auto-style11"><strong>Giỏ hàng</strong></span></a>
+                  <!--<div class="minicart">
+                      <ul class="minicart-sanpham">
+                          <li><a href="#"><img src="Anh/logo.png" width="30" height="30" />Sản phẩm 1</a><button><i class="fa fa-close"></i></button></li>
+                          <li><a href="#"><img src="Anh/logo.png" width="30" height="30" />Sản phẩm 2</a><button><i class="fa fa-close"></i></button></li>
+                      </ul>
+                      <div class="xem"><a href="#">Xem chi tiết</a></div>
+                  </div>-->
+                  <asp:Label ID="lbTongThanhTien" runat="server"></asp:Label>
+              </td>
+          </tr>
+          <tr>
+              
+              <td class="auto-style10">&nbsp;</td>
+              <td class="auto-style8">&nbsp;</td>
+              <td>&nbsp;</td>
+          </tr>
+      </table>
+    
+    
+  </div>
+  <div class="menu">
+    
+        
+<ul>
+     <li><a href="../../TrangChu.aspx">Trang Chủ</a></li>
+      <li><a href="#">Giới thiệu</a></li>
+      <li><a href="#">Cây cảnh</a>
+        <ul class="submenu">
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:WebBanCayCanhConnectionString %>" SelectCommand="SELECT [TenLoaiSP], [MaLoaiSP] FROM [LOAISANPHAM]">
+              </asp:SqlDataSource>
+              
+            <asp:DataList ID="DataList1" runat="server" CellPadding="4" DataSourceID="SqlDataSource1" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" ForeColor="#4B4B4B" ShowFooter="False" ShowHeader="False">
+                <AlternatingItemStyle BackColor="White" />
+                <ItemStyle BackColor="#bade8f" />
+                <ItemTemplate>
+                    <li style="text-align: left; padding-left: 40px">
+                        <asp:HyperLink ID="DanhMucSP" runat="server" Text='<%# Eval("TenLoaiSP") %>' NavigateUrl='<%# "~/TheLoaiSanPham.aspx/?MaLoaiSP="+ Eval("MaLoaiSP") %>' CssClass="TenDSSP"></asp:HyperLink></li>
+                    <br />
+                </ItemTemplate>
+                <SelectedItemStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+            </asp:DataList>
+          
+        </ul>
+      </li>
+      <li><a href="#">Dịch vụ</a></li>
+      <li><a href="#">Blog - Tin tức</a></li>
+      <li class="auto-style12"><a href="#">Hỗ trợ - Liên hệ</a></li>
+        
+        
+        
+        </ul>
+    
+    
+  </div>
+            
+  <div class="container content">
+      
+    <div class="leftmain">
+      <div class="Danhsach">
+        <div class="tieude"> <button class="dropdown-btn"><i class="fa fa-bars" aria-hidden="true"></i>Danh mục sản phẩm</button></div>
+          <div class="danhmuc">
+               
+                  
+                  <div class="dropdown-container">
+                        
+
+                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:WebBanCayCanhConnectionString %>" SelectCommand="SELECT [TenLoaiSP], [MaLoaiSP] FROM [LOAISANPHAM]"></asp:SqlDataSource>
+
+                  <asp:DataList ID="Danhmuc" runat="server" CellPadding="4" DataSourceID="SqlDataSource1" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" ForeColor="#4B4B4B" ShowFooter="False" ShowHeader="False" Width="243px" CssClass="Danhsachsp">
+                      <AlternatingItemStyle BackColor="White" />
+
+                      <ItemStyle BackColor="#bade8f" />
+                      <ItemTemplate>
+                          &nbsp;&nbsp;&nbsp;
+                      <asp:HyperLink ID="DanhMucSP" runat="server" Text='<%# Eval("TenLoaiSP") %>' NavigateUrl='<%# "~/TheLoaiSanPham.aspx/?MaLoaiSP="+ Eval("MaLoaiSP") %>' CssClass="TenDSSP"></asp:HyperLink>
+                          <br />
+                      </ItemTemplate>
+                      <SelectedItemStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                  </asp:DataList>
+     </div>
+              </div>
+              
+          
+      </div>
+      <div class="Danhsacha">
+        <div class="tieude"><i class="fa fa-bars" aria-hidden="true"></i><span>Tin tức nổi bật</span></div	>
+        
+            <div class="tintuc">
+            	
+                <table style="width:100%;">
+                    <tr>
+                        <td class="auto-style13">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style13">&nbsp;</td>
+                    </tr>
+                </table>
+            	
+            </div>
+          
+          
+        
+      </div>
+        
+    </div>
+    <div class="rightmain">
+        <asp:ContentPlaceHolder ID="head" runat="server">
+        </asp:ContentPlaceHolder>
+        
+    </div>
+      <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+  </div>
+  <div class="footer"> 
+      <table class="auto-style14">
+          <tr>
+              <td class="auto-style40">Địa chỉ: Đường Lê Chí Dân, phường Tương Bình Hiệp, TP. Thủ Dầu Một, Tỉnh Bình Dương</td>
+          </tr>
+          <tr>
+              <td class="auto-style41">Email:bancaycanh@gmail.com</td>
+          </tr>
+          <tr>
+              <td class="auto-style42">SĐT: 0903000063</td>
+          </tr>
+          <tr>
+              <td class="auto-style39">Copyright @ 2020 @ by TTT . All right reserved.</td>
+          </tr>
+      </table>
+            </div>
+</div>
+        
+    </form>
+   
+</body>
+</html>
