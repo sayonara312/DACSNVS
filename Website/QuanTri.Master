@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="QuanTri.master.cs" Inherits="Website.QuanTri1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="CSSQuanTri.css" rel="stylesheet" />
+
+ <script src="//cdn.ckeditor.com/4.15.1/full/ckeditor.js"></script>
+
+    <script src="ckeditor/ckeditor.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="container">
+        <div class="noidung">
+        <div class="leftmenu">
+        <ul>
+            <li><a href="TrangChu.aspx">Trang Chủ</a></li>
+            <li>Quản Trị Danh Mục</li>
+            <ul class="con">
+                <li><a href="QuanTri.aspx">Sản Phẩm</a></li>
+                <li><a href="QuanTriLSP.aspx">Loại Sản Phẩm</a></li>
+                <li><a href="QuanTriBlog.aspx">Blog</a></li>
+            </ul>
+        </ul>
+        </div>
+        <div class="content">
+            <asp:ContentPlaceHolder ID="head" runat="server">
+            
+                </asp:ContentPlaceHolder>
+            </div>
+            </div>
+            </div>
+    </form>
+</body>
+</html>

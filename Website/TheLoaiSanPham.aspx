@@ -23,19 +23,19 @@
             <table style="width:255px; height: 166px;">
                 <tr>
                     <td rowspan="3">
-                        <asp:Image ID="Image1" runat="server" Height="139px" ImageUrl='<%# "~/Anh/CayCanh/"+Eval("TenLoaiSP") +"/"+Eval("HinhAnh") %>' Width="100px" />
+                        <asp:Image ID="Image1" runat="server" Height="139px" ImageUrl='<%# "~/Anh/CayCanh/"+Eval("TenLoaiSP") +"/"+Eval("HinhAnh") %>' Width="100px" CssClass="anh" />
                     </td>
                     <td>
                         <asp:HyperLink ID="HyperLink1" runat="server" CssClass="tenSP" NavigateUrl='<%# Eval("MaSP","ChiTietSanPham.aspx?MaSP={0}") %>' Text='<%# Eval("TenSP") %>'></asp:HyperLink>
                     </td>
                 </tr>
                 <tr>
-                    <td><strong>Giá:</strong><asp:Label ID="TienSPLabel" runat="server" Text='<%# Eval("TienSP") %>' />
-                    </td>
+                    <td><strong>Giá:</strong><asp:Label ID="TienSPLabel" runat="server" Text='<%# Eval("TienSP") %>' style="color: #FF0000" />
+                        <span style="color: #FF0000">VNĐ</span></td>
                 </tr>
                 <tr>
                     <td style="text-align: center">
-                        <asp:Button ID="btnDatMua" runat="server" CssClass="btnDat" Text="Đặt Mua" />
+                        <asp:HyperLink ID="HyperLink2" runat="server" CssClass="btnDat" Font-Underline="false" NavigateUrl='<%# "~/GioHang.aspx?MSP="+Eval("MaSP") %>'>Đặt Mua</asp:HyperLink>
                     </td>
                 </tr>
             </table>

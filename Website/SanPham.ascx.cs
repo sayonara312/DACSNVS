@@ -27,6 +27,10 @@ namespace Website
 
         }
 
+        protected void btnDatMua_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
 

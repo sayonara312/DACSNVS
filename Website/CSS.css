@@ -227,6 +227,7 @@ td.giohang:hover .minicart{
     border-radius: 5px;
     background-color: #28a745;
     cursor: pointer;
+    
 }
 
     .btnDat:hover {
@@ -288,7 +289,13 @@ td.giohang:hover .minicart{
     line-height: 40px;
     color: white;
 }
-.dropdown-btn:hover
-{
-    cursor:pointer;
-}
+    .dropdown-btn:hover {
+        cursor: pointer;
+    }
+    .anh{
+        transition:all 0.5s ease-in;
+    }
+    .anh:hover
+    {
+        transform:scale(1.1);
+    }

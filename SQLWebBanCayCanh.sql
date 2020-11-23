@@ -25,6 +25,9 @@ CREATE TABLE SANPHAM(
 	HinhAnh nvarchar(50) ,
 	NhaCC nvarchar(50),
 	TienSP int ,
+	NgayCapNhat SMALLDATETIME,
+	SoLuongBan INT CHECK(SoLuongBan>0),
+	SoLanXem INT DEFAULT 0,
 	Mota Ntext 
 );
 
@@ -42,12 +45,22 @@ Create table SUBMENU
 	
 
 )
+
+Create table ADMIN
+(
+	MaTK int not null identity(1,1) primary key(MaTK),
+	LoaiTK int not null,
+	TaiKhoan varchar(20) not null,
+	MatKhau varchar(20) not null
+)
+
 alter table SUBMENU
 add constraint FK_SUBMENU_MENU foreign key (ParentID) references MENU(ParentID)
 
 alter table SANPHAM
 add constraint FK_SANPHAM_LOAISP  foreign key (MaLoaiSP) references LOAISANPHAM(MaLoaiSP)
 
+insert into ADMIN values(1,'admin','1')
 
 
 insert into MENU values(1,N'Trang Chủ')
@@ -67,7 +80,6 @@ insert into SUBMENU values(6,3,N'Cây sân vườn')
 insert into SUBMENU values(7,3,N'Cây thủy sinh')
 insert into SUBMENU values(8,3,N'Cây xương rồng')
 
-
 insert into LOAISANPHAM values('LSP01',N'Cây phong thủy')
 insert into LOAISANPHAM values('LSP02',N'Cây trong nhà')
 insert into LOAISANPHAM values('LSP03',N'Cây văn phòng')
@@ -79,7 +91,7 @@ insert into LOAISANPHAM values('LSP08',N'Cây xương rồng')
 
 
 --Insert table SANPHAM
-insert into SANPHAM values('SP01','LSP01',N'Bonsai',13,'kimngan.jpg',N'Trường An',123000,N'
+insert into SANPHAM values('SP01','LSP01',N'Bonsai',13,'kimngan.jpg',N'Trường An',123000,'2020/2/7',400,0,N'
 Bonsai ( Hán-Việt: bồn tài, nghĩa là "cây con trồng trong chậu") là loại cây cảnh nhỏ có dáng cổ thụ trồng trong chậu cảnh.
 
 Nghệ thuật bonsai có nguồn gốc từ Trung Quốc, sau đó nó được phổ biến sang Nhật Bản và Hàn Quốc khi họ phát hiện trên núi có các cây nhỏ mọc hoang dã giống cây cổ thụ, có sức sống mãnh liệt trong mọi điều kiện khó khăn, sau đó người ta đem nó về trồng trong chậu nhỏ và cắt tỉa, uốn sửa tạo dáng cho đẹp hơn.
@@ -105,7 +117,7 @@ Vào triều đại nhà Thanh (từ năm 1644 đến năm 1911) bồn cảnh v�
 Năm 1879, người Nhật đã giới thiệu bonsai đến hội chợ thế giới tại Paris rồi tới London vào năm 1909.
 
 Năm 1989, nghệ thuật bonsai đã phát triển đến giai đoạn phổ thông trên khắp thế giới.')
-insert into SANPHAM values('SP02','LSP01',N'Mộc Lan',52,'moclan.jpg',N'Đức Thịnh',59000,N'
+insert into SANPHAM values('SP02','LSP01',N'Mộc Lan',52,'moclan.jpg',N'Đức Thịnh',59000,'2020/2/18',999,0,N'
 Cây hoa mộc lan theo phong thủy Phương Đông thì nó có tính phong thủy cao, cây mà trồng trước nhà mang lại nhiều vượng khí cho ngôi nhà, gia chủ có khả năng thăng tiến trong công việc…
 Cây hoa mộc lan là cây cảnh rất đẹp, sai hoa. Cây có thể trồng trang trí tại vườn trước cửa nhà đều rất tốt cho phong thủy giúp gia đình bạn gặp nhiều may mắn
 
@@ -132,44 +144,44 @@ Hoa mộc lan rất to, đường kính lên tới 12-15cm, với hình dáng ng
 Hoa mộc lan không chỉ đẹp mà còn có hương thơm rất quyến rũ, thường dành để chế tạo nước hoa. Hoa thường mọc ở đầu cành, nách lá nên rất sai hoa, mỗi đợt hoa có hàng trăm bông chen chúc trên một cây nên trông cây càng thu hút.
 
 Điểm nổi bật nữa là mộc lan rụng lá trước khi nở hoa nên trên cây như được thắp lên hàng trăm ngọn lửa bồng bềnh, rực rỡ trông như hoa giả được cắm lên cành . Nhị hoa cũng nhiều màu sắc.')
-insert into SANPHAM values('SP03','LSP01',N'Ngọc Ngân',67,'ngocngan.jpg',N'Đức Thịnh',90000,'')
-insert into SANPHAM values('SP04','LSP01',N'Kim Tiền',42,'kimtien.jpg',N'Đức Thịnh',89000,'')
-insert into SANPHAM values('SP05','LSP01',N'Tài Lộc',12,'tailoc.jpg',N'Đức Thịnh',67000,'')
-insert into SANPHAM values('SP06','LSP02',N'Dây Nhện',32,'daynhen.jpg',N'Trường An',97000,'')
-insert into SANPHAM values('SP07','LSP02',N'Hương Đào',32,'huongdao.jpg',N'Trường An',127000,'')
-insert into SANPHAM values('SP08','LSP02',N'Lan Y',32,'lany.jpg',N'Trường An',127000,'')
-insert into SANPHAM values('SP09','LSP02',N'Lưỡi Hổ',32,'luoiho.jpg',N'Trường An',27000,'')
-insert into SANPHAM values('SP10','LSP02',N'Tài Lộc',32,'tailoc.jpg',N'Trường An',47000,'')
-insert into SANPHAM values('SP11','LSP03',N'Bao Thanh Thiên',32,'baothanhthien.jpg',N'Trường An',97000,'')
-insert into SANPHAM values('SP12','LSP03',N'Kim Tiền',32,'kimtien.jpg',N'Trường An',97000,'')
-insert into SANPHAM values('SP13','LSP03',N'Ngọc Bích',32,'ngocbich.jpg',N'Trường An',147000,'')
-insert into SANPHAM values('SP14','LSP03',N'Tiểu Hồng Môn',32,'tieuhongmon.jpg',N'Trường An',67000,'')
-insert into SANPHAM values('SP15','LSP03',N'Thiết Mọc Lan',32,'thietmoclan.jpg',N'Đức Thịnh',77000,'')
-insert into SANPHAM values('SP16','LSP04',N'Hoa Hồng Leo',32,'hoahongleo.jpg',N'Đức Thịnh',77000,'')
-insert into SANPHAM values('SP17','LSP04',N'Hoa Tử Đằng',32,'hoatudang.jpg',N'Đức Thịnh',77000,'')
-insert into SANPHAM values('SP18','LSP04',N'Cúc Tần Ấn Độ',32,'cuctanando.jpg',N'Trường An',97000,'')
-insert into SANPHAM values('SP19','LSP04',N'Hoa Hậu Biếc',32,'hoahaubiec.jpg',N'Trường An',97000,'')
-insert into SANPHAM values('SP20','LSP04',N'Mống Cọp',32,'mongcop.jpg',N'Trường An',97000,'')
-insert into SANPHAM values('SP21','LSP05',N'Kim Ngân',32,'kimngan.jpg',N'Gia Phát',97000,'')
-insert into SANPHAM values('SP22','LSP05',N'Kim Tiền',32,'kimtien.jpg',N'Gia Phát',97000,'')
-insert into SANPHAM values('SP23','LSP05',N'May Mắn',32,'mayman.jpg',N'Gia Phát',97000,'')
-insert into SANPHAM values('SP24','LSP05',N'Ngọc Ngân',32,'ngocngan.jpg',N'Gia Phát',97000,'')
-insert into SANPHAM values('SP25','LSP05',N'Phú Quý',32,'phuquy.jpg',N'Gia Phát',97000,'')
-insert into SANPHAM values('SP26','LSP06',N'Nho',32,'caynho.jpg',N'Gia Phát',97000,'')
-insert into SANPHAM values('SP27','LSP06',N'Hắc Mây',32,'hacmay.jpg',N'Gia Phát',97000,'')
-insert into SANPHAM values('SP28','LSP06',N'Thủy Lập',32,'thuylap.jpg',N'Gia Phát',97000,'')
-insert into SANPHAM values('SP29','LSP06',N'Tre Cảnh',32,'trecanh.jpg',N'Gia Phát',97000,'')
-insert into SANPHAM values('SP30','LSP06',N'Xương Rống',32,'xuongrong.jpg',N'Gia Phát',97000,'')
-insert into SANPHAM values('SP31','LSP07',N'Đế Vương Xanh',32,'devuongxanh.jpg',N'Gia Phát',97000,'')
-insert into SANPHAM values('SP32','LSP07',N'Ngũ Gia',32,'ngugia.jpg',N'Gia Phát',97000,'')
-insert into SANPHAM values('SP33','LSP07',N'Sen Đá Nâu',32,'sandanau.jpg',N'Gia Phát',97000,'')
-insert into SANPHAM values('SP34','LSP07',N'Trúc Nhật',32,'trucnhat.jpg',N'Gia Phát',97000,'')
-insert into SANPHAM values('SP35','LSP07',N'Van Thiên Thanh',32,'vanthienthanh.jpg',N'Gia Phát',97000,'')
-insert into SANPHAM values('SP36','LSP08',N'Bánh Sinh Nhật',32,'banhsinhnhat.jpeg',N'Gia Phát',97000,'')
-insert into SANPHAM values('SP37','LSP08',N'Bát Tiên',32,'battien.jpg',N'Lưu Thiện',54000,'')
-insert into SANPHAM values('SP38','LSP08',N'Tai Thỏ',32,'taitho.jpg','Phú Thiên',24000,'')
-insert into SANPHAM values('SP39','LSP08',N'Thanh Sơn',32,'thanhson.jpg',N'Lưu Thiện',54000,'')
-insert into SANPHAM values('SP40','LSP08',N'Trứng Chim',32,'trungchim.jpg',N'Lưu Thiện',94000,'')
+insert into SANPHAM values('SP03','LSP01',N'Ngọc Ngân',67,'ngocngan.jpg',N'Đức Thịnh',90000,'2020/3/4',300,0,'')
+insert into SANPHAM values('SP04','LSP01',N'Kim Tiền',42,'kimtien.jpg',N'Đức Thịnh',89000,'2020/4/4',231,0,'')
+insert into SANPHAM values('SP05','LSP01',N'Tài Lộc',12,'tailoc.jpg',N'Đức Thịnh',67000,'2020/3/4',500,0,'')
+insert into SANPHAM values('SP06','LSP02',N'Dây Nhện',32,'daynhen.jpg',N'Trường An',97000,'2020/7/8',600,0,'')
+insert into SANPHAM values('SP07','LSP02',N'Hương Đào',32,'huongdao.jpg',N'Trường An',127000,'2020/7/8',200,0,'')
+insert into SANPHAM values('SP08','LSP02',N'Lan Y',32,'lany.jpg',N'Trường An',127000,'2020/3/4',310,0,'')
+insert into SANPHAM values('SP09','LSP02',N'Lưỡi Hổ',32,'luoiho.jpg',N'Trường An',27000,'2020/3/4',120,0,'')
+insert into SANPHAM values('SP10','LSP02',N'Tài Lộc',32,'tailoc.jpg',N'Trường An',47000,'2020/3/4',300,0,'')
+insert into SANPHAM values('SP11','LSP03',N'Bao Thanh Thiên',32,'baothanhthien.jpg',N'Trường An',97000,'2020/3/4',450,0,'')
+insert into SANPHAM values('SP12','LSP03',N'Kim Tiền',32,'kimtien.jpg',N'Trường An',97000,'2020/3/4',100,0,'')
+insert into SANPHAM values('SP13','LSP03',N'Ngọc Bích',32,'ngocbich.jpg',N'Trường An',147000,'2020/3/4',390,0,'')
+insert into SANPHAM values('SP14','LSP03',N'Tiểu Hồng Môn',32,'tieuhongmon.jpg',N'Trường An',67000,'2020/3/4',308,0,'')
+insert into SANPHAM values('SP15','LSP03',N'Thiết Mọc Lan',32,'thietmoclan.jpg',N'Đức Thịnh',77000,'2020/3/4',301,0,'')
+insert into SANPHAM values('SP16','LSP04',N'Hoa Hồng Leo',32,'hoahongleo.jpg',N'Đức Thịnh',77000,'2020/3/4',210,0,'')
+insert into SANPHAM values('SP17','LSP04',N'Hoa Tử Đằng',32,'hoatudang.jpg',N'Đức Thịnh',77000,'2020/3/4',398,0,'')
+insert into SANPHAM values('SP18','LSP04',N'Cúc Tần Ấn Độ',32,'cuctanando.jpg',N'Trường An',97000,'2020/3/4',398,0,'')
+insert into SANPHAM values('SP19','LSP04',N'Hoa Hậu Biếc',32,'hoahaubiec.jpg',N'Trường An',97000,'2020/3/4',342,0,'')
+insert into SANPHAM values('SP20','LSP04',N'Mống Cọp',32,'mongcop.jpg',N'Trường An',97000,'2020/3/4',420,0,'')
+insert into SANPHAM values('SP21','LSP05',N'Kim Ngân',32,'kimngan.jpg',N'Gia Phát',97000,'2020/3/4',100,0,'')
+insert into SANPHAM values('SP22','LSP05',N'Kim Tiền',32,'kimtien.jpg',N'Gia Phát',97000,'2020/3/4',200,0,'')
+insert into SANPHAM values('SP23','LSP05',N'May Mắn',32,'mayman.jpg',N'Gia Phát',97000,'2020/3/4',300,0,'')
+insert into SANPHAM values('SP24','LSP05',N'Ngọc Ngân',32,'ngocngan.jpg',N'Gia Phát',97000,'2020/3/4',450,0,'')
+insert into SANPHAM values('SP25','LSP05',N'Phú Quý',32,'phuquy.jpg',N'Gia Phát',97000,'2020/3/4',600,0,'')
+insert into SANPHAM values('SP26','LSP06',N'Nho',32,'caynho.jpg',N'Gia Phát',97000,'2020/3/4',100,0,'')
+insert into SANPHAM values('SP27','LSP06',N'Hắc Mây',32,'hacmay.jpg',N'Gia Phát',97000,'2020/3/4',80,0,'')
+insert into SANPHAM values('SP28','LSP06',N'Thủy Lập',32,'thuylap.jpg',N'Gia Phát',97000,'2020/3/4',100,0,'')
+insert into SANPHAM values('SP29','LSP06',N'Tre Cảnh',32,'trecanh.jpg',N'Gia Phát',97000,'2020/3/4',180,0,'')
+insert into SANPHAM values('SP30','LSP06',N'Xương Rống',32,'xuongrong.jpg',N'Gia Phát',97000,'2020/3/4',370,0,'')
+insert into SANPHAM values('SP31','LSP07',N'Đế Vương Xanh',32,'devuongxanh.jpg',N'Gia Phát',97000,'2020/3/4',100,0,'')
+insert into SANPHAM values('SP32','LSP07',N'Ngũ Gia',32,'ngugia.jpg',N'Gia Phát',97000,'2020/3/4',980,0,'')
+insert into SANPHAM values('SP33','LSP07',N'Sen Đá Nâu',32,'sandanau.jpg',N'Gia Phát',97000,'2020/3/4',100,0,'')
+insert into SANPHAM values('SP34','LSP07',N'Trúc Nhật',32,'trucnhat.jpg',N'Gia Phát',97000,'2020/3/4',300,0,'')
+insert into SANPHAM values('SP35','LSP07',N'Van Thiên Thanh',32,'vanthienthanh.jpg',N'Gia Phát',97000,'2020/3/4',90,0,'')
+insert into SANPHAM values('SP36','LSP08',N'Bánh Sinh Nhật',32,'banhsinhnhat.jpeg',N'Gia Phát',97000,'2020/3/4',9,0,'')
+insert into SANPHAM values('SP37','LSP08',N'Bát Tiên',32,'battien.jpg',N'Lưu Thiện',54000,'2020/3/4',3,0,'')
+insert into SANPHAM values('SP38','LSP08',N'Tai Thỏ',32,'taitho.jpg','Phú Thiên',24000,'2020/3/4',54,0,'')
+insert into SANPHAM values('SP39','LSP08',N'Thanh Sơn',32,'thanhson.jpg',N'Lưu Thiện',54000,'2020/3/4',102,0,'')
+insert into SANPHAM values('SP40','LSP08',N'Trứng Chim',32,'trungchim.jpg',N'Lưu Thiện',94000,'2020/3/4',65,0,'')
 
 
 

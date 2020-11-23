@@ -20,6 +20,14 @@
     }
     
     
+    .auto-style11 {
+        color: #FF0000;
+    }
+    .auto-style12 {
+        text-align: left;
+    }
+    
+    
     </style>
 
 <asp:DataList ID="DataList1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="SqlDataSource1" GridLines="Both" Width="240px" RepeatColumns="4" OnItemCommand="DataList1_ItemCommand">
@@ -30,20 +38,20 @@
         <table class="auto-style3">
             <tr>
                 <td class="auto-style7" rowspan="3">
-                    <asp:Image ID="Image1" runat="server" Height="136px" ImageUrl='<%# "~/Anh/CayCanh/"+Eval("TenLoaiSP") +"/"+Eval("HinhAnh") %>' Width="100px" />
+                    <a href="<%# Eval("MaSP", "ChiTietSanPham.aspx?MaSP={0}") %>"><asp:Image ID="Image1" runat="server" Height="136px" ImageUrl='<%# "~/Anh/CayCanh/"+Eval("TenLoaiSP") +"/"+Eval("HinhAnh") %>' Width="100px" CssClass="anh" /></a>
                 </td>
-                <td>&nbsp;<strong><asp:HyperLink ID="MaSP" runat="server" NavigateUrl='<%# "~/GioHang.aspx?MaSP="+Eval("MaSP") %>' Text='<%# Eval("MaSP") %>' Visible="False"></asp:HyperLink>
-&nbsp;</strong><asp:HyperLink ID="TenSP" runat="server" Text='<%# Eval("TenSP") %>' NavigateUrl='<%# Eval("MaSP", "ChiTietSanPham.aspx?MaSP={0}") %>' CssClass="tenSP" Width="139px"></asp:HyperLink>
+                <td class="auto-style12">&nbsp;<strong><asp:HyperLink ID="MaSP" runat="server" NavigateUrl='<%# "~/GioHang.aspx?MaSP="+Eval("MaSP") %>' Text='<%# Eval("MaSP") %>' Visible="False"></asp:HyperLink>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><asp:HyperLink ID="TenSP" runat="server" Text='<%# Eval("TenSP") %>' NavigateUrl='<%# Eval("MaSP", "ChiTietSanPham.aspx?MaSP={0}") %>' CssClass="tenSP" Width="139px"></asp:HyperLink>
                 </td>
             </tr>
             <tr>
                 <td>&nbsp; <span class="auto-style5"><strong>Giá:</strong></span>
-                    <asp:Label ID="GiaSP" runat="server" Text='<%# Eval("TienSP") %>' CssClass="auto-style5"></asp:Label>
-                </td>
+                    <asp:Label ID="GiaSP" runat="server" Text='<%# Eval("TienSP") %>' CssClass="auto-style11"></asp:Label>
+                    <span class="auto-style11">VNĐ</span></td>
             </tr>
             <tr>
                 <td class="auto-style10">
-                    <asp:Button ID="btnDatMua" runat="server" CssClass="btnDat" Text="Đặt Mua" CommandName="DatMua"/>
+                    <asp:HyperLink ID="HyperLink1" runat="server" CssClass="btnDat" NavigateUrl='<%# "~/GioHang.aspx?MSP="+Eval("MaSP") %>' Font-Underline="false">Đặt Mua</asp:HyperLink>
                 </td>
             </tr>
         </table>
