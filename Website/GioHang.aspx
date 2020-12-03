@@ -45,11 +45,11 @@
         </tr>
         <tr>
             <td colspan="2" style="height: 21px;"></td>
-            <td class="auto-style6" style="width: 776px; height: 21px;">
+            <td class="auto-style6" style="height: 21px; text-align: right;" colspan="2">
                 <asp:Label ID="lbTC" runat="server" Text="Tổng cộng:"></asp:Label>
-            </td>
-            <td style="height: 21px; width: 309px">
-                <asp:Label ID="lbTongThanhTien" runat="server"></asp:Label>
+                <asp:Label ID="lbTongThanhTien" runat="server" style="color: #FF0000"></asp:Label>
+            &nbsp;
+                <asp:Label ID="lbVND" runat="server" Text="VNĐ"></asp:Label>
             </td>
         </tr>
         <tr>

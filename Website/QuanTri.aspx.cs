@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,7 +12,11 @@ namespace Website
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string sql = "Select MaSP,TenSP,TienSP,NgayCapNhat,SoLuongBan,SoLanXem from sanpham";
+            DataTable dt= XLDL.GetData(sql);
+            gvSP.DataSource = dt;
+            gvSP.DataBind();
+            
         }
 
         protected void gvSP_PageIndexChanging(object sender, GridViewPageEventArgs e)

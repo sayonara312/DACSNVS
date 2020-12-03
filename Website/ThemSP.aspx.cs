@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.IO;
 namespace Website
 {
     public partial class ThemSP : System.Web.UI.Page
@@ -32,7 +32,7 @@ namespace Website
         {
             
         }
-
+        
         protected void btnLuu_Click(object sender, EventArgs e)
         {
             try
@@ -41,12 +41,16 @@ namespace Website
                 string TenSP = tbTenSP.Text;
                 string LoaiSP = rdLSP.SelectedValue.ToString();
                 int TienSP = int.Parse(tbDonGia.Text);
-                string NCC = tbNCC.Text;
-                
+                string NCC = HttpUtility.HtmlEncode(tbNCC.Text);
+
                 string mota;
-                mota = MoTa.Value;
-                string HinhAnh = fuAnh.ToString();
+                mota=MoTa.Value;
                 
+
+                string HinhAnh = FileUpload1.ToString();
+                
+
+
                 string Ngay = NgayCapNhat.SelectedDate.ToString();
                 int SL = int.Parse(tbSoLuong.Text);
                 int SLX = int.Parse(tbSoLanXem.Text);
@@ -67,6 +71,17 @@ namespace Website
         {
             
             
+        }
+
+        protected void btnUpload_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid && FileUpload1.HasFile)
+            {
+                string fileName = "~/" + FileUpload1.FileName;
+                string filePath = MapPath(fileName);
+                FileUpload1.SaveAs(filePath);
+                Image1.ImageUrl = fileName;
+            }
         }
     }
     }

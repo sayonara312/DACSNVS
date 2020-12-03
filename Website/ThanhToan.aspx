@@ -3,7 +3,7 @@
 
     <table style="width:100%;">
         <tr>
-            <td style="padding: 25px; height: 80px; background-color: #CCFFCC;">THÔNG TIN GIỎ HÀNG</td>
+            <td style="padding: 25px; height: 80px; background-color: #CCFFCC; text-align: center; font-size: xx-large;"><strong>THÔNG TIN GIỎ HÀNG</strong></td>
         </tr>
         <tr>
             <td style="padding: 20px">
@@ -19,9 +19,6 @@
                                 <asp:TextBox ID="tbSoLuong" runat="server" Text='<%# Eval("SoLuong") %>' Width="50px"  ></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:ButtonField ButtonType="Image" CommandName="Xoa" ImageUrl="~/Anh/Icon/Delete.jpg" >
-                        <ItemStyle HorizontalAlign="Center" />
-                        </asp:ButtonField>
                     </Columns>
                     <FooterStyle BackColor="White" ForeColor="#000066" />
                     <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
@@ -36,47 +33,52 @@
             </td>
         </tr>
         <tr>
-            <td style="height: 21px; text-align: right">Tổng Tiền: <asp:Label ID="lbTongTien" runat="server"></asp:Label>
-            </td>
+            <td style="height: 21px; text-align: right; padding-right: 25px;">Tổng Tiền: <asp:Label ID="lbTongTien" runat="server" style="color: #FF0000"></asp:Label>
+            &nbsp;VNĐ</td>
         </tr>
     </table>
     <br />
     <table style="width:100%;">
         <tr>
-            <td colspan="2" style="padding: 25px; background-color: #CCFFCC;">THÔNG TIN GIAO HÀNG</td>
+            <td colspan="2" style="padding: 25px; background-color: #CCCCC; height: 52px;"><strong>THÔNG TIN GIAO HÀNG</strong></td>
         </tr>
         <tr>
-            <td class="auto-style6" style="padding: 25px; width: 232px;">Người nhận: </td>
-            <td>
-                <asp:TextBox ID="txtTenNguoiNhan" runat="server" Width="395px"></asp:TextBox>
+            <td class="auto-style13" style="padding: 25px; width: 175px; height: 54px;">Người nhận: </td>
+            <td style="height: 54px">
+                <asp:TextBox ID="txtTenNguoiNhan" runat="server" Width="395px" Height="30px"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtTenNguoiNhan" ErrorMessage="Chưa Chọn Người Nhận!!!" style="color: #FF0000"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
-            <td class="auto-style6" style="padding: 25px; width: 232px;">Địa Chỉ: </td>
+            <td class="auto-style13" style="padding: 25px; width: 175px;">Địa Chỉ: </td>
             <td>
-                <asp:TextBox ID="txtDiaChiNhan" runat="server" Width="392px"></asp:TextBox>
+                <asp:TextBox ID="txtDiaChiNhan" runat="server" Width="392px" Height="30px"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtDiaChiNhan" ErrorMessage="Chưa Nhập Địa Chỉ Giao Hàng!!!" style="color: #FF0000"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
-            <td class="auto-style6" style="padding: 25px; width: 232px;">Điện Thoại: </td>
+            <td class="auto-style13" style="padding: 25px; width: 175px;">Điện Thoại: </td>
             <td>
-                <asp:TextBox ID="txtDienThoaiNhan" runat="server" Width="389px"></asp:TextBox>
+                <asp:TextBox ID="txtDienThoaiNhan" runat="server" Width="389px" Height="30px"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtDienThoaiNhan" ErrorMessage="Chưa Nhập Số Điện Thoại!!!" style="color: #FF0000"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
-            <td class="auto-style6" style="padding: 25px; width: 232px;">Hình Thức Thanh Toán: </td>
+            <td class="auto-style13" style="padding: 25px; width: 175px;">Hình Thức Thanh Toán: </td>
             <td>
                 <asp:RadioButtonList ID="rblHinhThucThanhToan" runat="server">
                     <asp:ListItem>Thanh Toán Trực Tiếp</asp:ListItem>
                     <asp:ListItem>Thanh Toán Bằng Thẻ</asp:ListItem>
                 </asp:RadioButtonList>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="rblHinhThucThanhToan" ErrorMessage="Vui lòng chọn hình thức thanh toán !!!" style="color: #FF0000"></asp:RequiredFieldValidator>
+                <br />
             </td>
         </tr>
         <tr>
-            <td class="auto-style6" style="padding: 25px; width: 232px;">&nbsp;</td>
+            <td class="auto-style13" style="padding: 25px; width: 175px;">&nbsp;</td>
             <td style="height: 21px">
                 <br />
-                <asp:Button ID="btDongY" runat="server" Text="Thanh Toán" OnClick="btDongY_Click" />
+                <asp:Button ID="btDongY" runat="server" Text="Thanh Toán" OnClick="btDongY_Click" CssClass="btnDat" />
             </td>
         </tr>
     </table>

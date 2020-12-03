@@ -227,6 +227,8 @@ td.giohang:hover .minicart{
     border-radius: 5px;
     background-color: #28a745;
     cursor: pointer;
+    text-decoration:none;
+    list-style:none;
     
 }
 
@@ -299,3 +301,4 @@ td.giohang:hover .minicart{
     {
         transform:scale(1.1);
     }
+

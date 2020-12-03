@@ -19,41 +19,12 @@ namespace Website
         {
 
             /**/
-            if (Request.QueryString["MSP"] != null)
-                {
-                    string MaSP = Request.QueryString["MSP"].ToString();
-                    DataTable dt =  XL.Docbang("Select TenSP,TienSP from SANPHAM Where MaSP='" + MaSP+"'");
-                    string TenSP = dt.Rows[0][0].ToString();
-
-                    int DonGia = int.Parse(dt.Rows[0][1].ToString());
-                    int SoLuong = 1;
-                    ThemVaoGioHang(MaSP, TenSP, DonGia, SoLuong);
-
-                }
-                if (Session["Giohang"] != null)
-                {
-                    DataTable dt = new DataTable();
-                    dt = (DataTable)Session["GioHang"];
-                    System.Decimal tongThanhTien = 0;
-                    foreach (DataRow r in dt.Rows)
-                    {
-                        r["Thanhtien"] = Convert.ToInt32(r["SoLuong"])* Convert.ToDecimal(r["Dongia"]);
-                        tongThanhTien +=Convert.ToDecimal(r["Thanhtien"]);
-                        lbTongThanhTien.Text =tongThanhTien.ToString();
-                    }
-                    gvGioHang.DataSource = dt;
-                    gvGioHang.DataBind();
-                }
-                if (Session["Giohang"] == null)
-                {
-                    lbThongTinGH.Visible = false;
-                    lbTC.Visible = false;
-                    btnCapNhat.Visible = false;
-                    btnDathang.Visible = false;
-                    btnXoaGH.Visible = false;
-                    btnTTM.Visible = false;
-                    lbGioHang.Text = "Giỏ hàng rỗng!!!";
-                }
+            if(!IsPostBack)
+            {
+                loaddata();
+                
+            }
+            
 
 
 
@@ -62,7 +33,51 @@ namespace Website
 
 
         }
-       
+       public void loaddata()
+        {
+            if (Request.QueryString["MSP"] != null)
+            {
+                string MaSP = Request.QueryString["MSP"].ToString();
+                DataTable dt = XL.Docbang("Select TenSP,TienSP from SANPHAM Where MaSP='" + MaSP + "'");
+                string TenSP = dt.Rows[0][0].ToString();
+
+                int DonGia = int.Parse(dt.Rows[0][1].ToString());
+                int SoLuong = 1;
+                ThemVaoGioHang(MaSP, TenSP, DonGia, SoLuong);
+
+            }
+            if (Session["Giohang"] != null)
+            {
+                DataTable dt = new DataTable();
+                dt = (DataTable)Session["GioHang"];
+                System.Decimal tongThanhTien = 0;
+                foreach (DataRow r in dt.Rows)
+                {
+                    r["Thanhtien"] = Convert.ToInt32(r["SoLuong"]) * Convert.ToDecimal(r["Dongia"]);
+                    tongThanhTien += Convert.ToDecimal(r["Thanhtien"]);
+                    lbTongThanhTien.Text = tongThanhTien.ToString();
+                }
+                gvGioHang.DataSource = dt;
+                gvGioHang.DataBind();
+            }
+            angiohang();
+            
+
+        }
+        public void angiohang()
+        {
+            if (Session["Giohang"] == null)
+            {
+                lbThongTinGH.Visible = false;
+                lbTC.Visible = false;
+                lbVND.Visible = false;
+                btnCapNhat.Visible = false;
+                btnDathang.Visible = false;
+                btnXoaGH.Visible = false;
+                btnTTM.Visible = false;
+                lbGioHang.Text = "Giỏ hàng rỗng!!!";
+            }
+        }
         public void ThemVaoGioHang(string MaSP, string TenSP,int DonGia,int SoLuong)
         {
             DataTable dt;
@@ -111,22 +126,28 @@ namespace Website
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if(e.CommandName=="Xoa")
-            {
-                int chiso = int.Parse(e.CommandArgument.ToString());
-                try
+            
+                if (e.CommandName == "Xoa")
                 {
-                    DataTable dt = (DataTable)Session["GioHang"];
-                    dt.Rows.RemoveAt(chiso);
-                    Session["GioHang"] = dt;
-                    Response.Redirect("~/GioHang.aspx");
+                    int chiso = int.Parse(e.CommandArgument.ToString());
+                    try
+                    {
+                        DataTable dt = (DataTable)Session["GioHang"];
+                        dt.Rows.RemoveAt(chiso);
+                        Session["GioHang"] = dt;
+                        
+                        
                     
+                        Response.Redirect("~/GioHang.aspx");
+
+                    }
+                    catch
+                    {
+                        Response.Redirect("~/GioHang.aspx");
+                    }
                 }
-                catch
-                {
-                    Response.Redirect("~/GioHang.aspx");
-                }
-            }
+            
+            
         }
 
         protected void btnXoaGH_Click(object sender, EventArgs e)
@@ -143,27 +164,30 @@ namespace Website
 
         protected void btnCapNhat_Click(object sender, EventArgs e)
         {
-            DataTable dt = (DataTable)Session["GioHang"];
-            foreach(GridViewRow r in gvGioHang.Rows)
-            {
-                foreach(DataRow dr in dt.Rows)
+            
+                DataTable dt = (DataTable)Session["GioHang"];
+                foreach (GridViewRow r in gvGioHang.Rows)
                 {
-                    if (Convert.ToString(gvGioHang.DataKeys[r.DataItemIndex].Value)==dr["MaSP"].ToString())
+                    foreach (DataRow dr in dt.Rows)
                     {
-                        TextBox t = (TextBox)r.Cells[2].FindControl("tbSoLuong");
-                        
-                        if (Convert.ToInt32(t.Text) <= 0)
-                            dt.Rows.Remove(dr);
-                        else
-                            dr["SoLuong"] = t.Text;
-                        break;
+                        if (Convert.ToString(gvGioHang.DataKeys[r.DataItemIndex].Value) == dr["MaSP"].ToString())
+                        {
+                            TextBox t = (TextBox)r.Cells[2].FindControl("tbSoLuong");
 
+                            if (Convert.ToInt32(t.Text) <= 0)
+                                dt.Rows.Remove(dr);
+                            else
+                                dr["SoLuong"] = t.Text;
+                            break;
+
+                        }
                     }
-                }
-                Session["GioHang"] = dt;
-                Response.Redirect("~/GioHang.aspx");
+                    Session["GioHang"] = dt;
+                    Response.Redirect("~/GioHang.aspx");
 
-            }
+                }
+            
+            
             
         }
 

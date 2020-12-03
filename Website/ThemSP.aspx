@@ -1,8 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/QuanTri.Master" AutoEventWireup="true" CodeBehind="ThemSP.aspx.cs" Inherits="Website.ThemSP" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/QuanTri.Master" AutoEventWireup="true" CodeBehind="ThemSP.aspx.cs" Inherits="Website.ThemSP" ValidateRequest="false"%>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-    <table style="height: 598px;" class="nav-justified">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server" >
+
+    <table style="height: 598px;" class="nav-justified" ">
         <tr>
             <td class="text-center" colspan="2">
                 <h1><strong>THÊM MỚI SẢN PHẨM</strong></h1>
@@ -11,7 +12,7 @@
         <tr>
             <td class="text-left" style="height: 40px; width: 124px"><strong>&nbsp;&nbsp;&nbsp; Mã Sản Phẩm</strong></td>
             <td style="height: 40px">
-                <asp:TextBox ID="tbMaSP" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbMaSP" runat="server" AutoCompleteType="None"></asp:TextBox >
             </td>
         </tr>
         <tr>
@@ -34,19 +35,24 @@
         </tr>
         <tr>
             <td class="modal-sm" style="width: 124px; text-align: left; height: 51px;"><strong>&nbsp;&nbsp;&nbsp; Mô Tả:</strong></td>
-            <td style="height: 51px"><textarea id="MoTa" name="MoTa" runat="server" style="width: 526px; height: 149px"></textarea>
-               
-
+            <td style="height: 51px">
+                <textarea id="MoTa" name="editor1" style="width: 526px; height: 149px" runat="server" ></textarea>
+            
+                
             
                 <script>
                     CKEDITOR.replace('editor1');
-                    function get() {
+
+                    function setvalue() {
                         var data = CKEDITOR.instances.editor1.getData();
-                         
                     }
                     
+                    
                 </script>
-
+   
+                
+                
+   
                 
             </td>
             
@@ -54,7 +60,15 @@
         <tr>
             <td class="modal-sm" style="width: 124px; text-align: left; height: 36px;"><strong>&nbsp;&nbsp;&nbsp; Hình Minh Họa</strong></td>
             <td style="height: 36px">
-                <asp:FileUpload ID="fuAnh" runat="server" />
+                <asp:FileUpload ID="FileUpload1" runat="server" Width="348px" Height="27px" />
+&nbsp;
+        <asp:Button ID="btnUpload" runat="server" Text="Upload" Height="27px" OnClick="btnUpload_Click" />
+    &nbsp;<br />
+        <br />
+      
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="FileUpload1" Display="None" ErrorMessage="Bạn cần chọn một tệp ảnh trước khi ấn nút &quot;Upload&quot;"></asp:RequiredFieldValidator>
+                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+                    <asp:Image ID="Image1" runat="server" Width="150px" />
             </td>
         </tr>
         <tr>
