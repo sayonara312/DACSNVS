@@ -35,32 +35,40 @@ namespace Website
         }
        public void loaddata()
         {
-            if (Request.QueryString["MSP"] != null)
+            try
             {
-                string MaSP = Request.QueryString["MSP"].ToString();
-                DataTable dt = XL.Docbang("Select TenSP,TienSP from SANPHAM Where MaSP='" + MaSP + "'");
-                string TenSP = dt.Rows[0][0].ToString();
-
-                int DonGia = int.Parse(dt.Rows[0][1].ToString());
-                int SoLuong = 1;
-                ThemVaoGioHang(MaSP, TenSP, DonGia, SoLuong);
-
-            }
-            if (Session["Giohang"] != null)
-            {
-                DataTable dt = new DataTable();
-                dt = (DataTable)Session["GioHang"];
-                System.Decimal tongThanhTien = 0;
-                foreach (DataRow r in dt.Rows)
+                if (Request.QueryString["MSP"] != null)
                 {
-                    r["Thanhtien"] = Convert.ToInt32(r["SoLuong"]) * Convert.ToDecimal(r["Dongia"]);
-                    tongThanhTien += Convert.ToDecimal(r["Thanhtien"]);
-                    lbTongThanhTien.Text = tongThanhTien.ToString();
+                    string MaSP = Request.QueryString["MSP"].ToString();
+                    DataTable dt = XL.Docbang("Select TenSP,TienSP from SANPHAM Where MaSP='" + MaSP + "'");
+                    string TenSP = dt.Rows[0][0].ToString();
+
+                    int DonGia = int.Parse(dt.Rows[0][1].ToString());
+                    int SoLuong = 1;
+                    ThemVaoGioHang(MaSP, TenSP, DonGia, SoLuong);
+
                 }
-                gvGioHang.DataSource = dt;
-                gvGioHang.DataBind();
+                if (Session["Giohang"] != null)
+                {
+                    DataTable dt = new DataTable();
+                    dt = (DataTable)Session["GioHang"];
+                    System.Decimal tongThanhTien = 0;
+                    foreach (DataRow r in dt.Rows)
+                    {
+                        r["Thanhtien"] = Convert.ToInt32(r["SoLuong"]) * Convert.ToDecimal(r["Dongia"]);
+                        tongThanhTien += Convert.ToDecimal(r["Thanhtien"]);
+                        lbTongThanhTien.Text = tongThanhTien.ToString();
+                    }
+                    gvGioHang.DataSource = dt;
+                    gvGioHang.DataBind();
+                }
+                angiohang();
             }
-            angiohang();
+            catch
+            {
+
+            }
+            
             
 
         }

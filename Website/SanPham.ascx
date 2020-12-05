@@ -30,11 +30,9 @@
     
     </style>
 
-<asp:DataList ID="DataList1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="SqlDataSource1" GridLines="Both" Width="240px" RepeatColumns="4" OnItemCommand="DataList1_ItemCommand">
-    <FooterStyle BackColor="White" ForeColor="#000066" />
-    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
-    <ItemStyle ForeColor="#000066" />
+<asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1" Width="240px" RepeatColumns="4" OnItemCommand="DataList1_ItemCommand">
     <ItemTemplate>
+        <div class="blognd">
         <table class="auto-style3">
             <tr>
                 <td class="auto-style7" rowspan="3">
@@ -55,9 +53,8 @@
                 </td>
             </tr>
         </table>
-        <br />
+        </div>
     </ItemTemplate>
-    <SelectedItemStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
 </asp:DataList>
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:WebBanCayCanhConnectionString %>" SelectCommand="SELECT LOAISANPHAM.TenLoaiSP, SANPHAM.TenSP, SANPHAM.HinhAnh, SANPHAM.TienSP, SANPHAM.MaSP, LOAISANPHAM.MaLoaiSP FROM LOAISANPHAM INNER JOIN SANPHAM ON LOAISANPHAM.MaLoaiSP = SANPHAM.MaLoaiSP"></asp:SqlDataSource>
 

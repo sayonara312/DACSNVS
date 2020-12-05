@@ -6,11 +6,11 @@
 <head runat="server">
     <title></title>
     <link href="CSSQuanTri.css" rel="stylesheet" />
-    <script src="ckeditor/ckeditor.js"></script>
+    
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="//cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.15.1/basic/ckeditor.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">

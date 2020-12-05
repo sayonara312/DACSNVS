@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Template.master.cs" Inherits="Website.Template" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Template.master.cs" Inherits="Website.Template"  %>
 
 <!DOCTYPE html>
 
@@ -10,7 +10,7 @@
     <link href="CSS.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="dropdownt.js"></script>
-   
+   <script src="//cdn.ckeditor.com/4.15.1/basic/ckeditor.js"></script>
   
     <style type="text/css">
         .auto-style6 {
@@ -29,9 +29,6 @@
         .auto-style11 {
             color: #499C4D;
             
-        }
-        .auto-style13 {
-            width: 196px;
         }
         .auto-style14 {
             width: 100%;
@@ -53,7 +50,12 @@
             height: 15px;
             text-align: center;
         }
-    </style>
+        .auto-style43 {
+            width: 226px;
+            margin: 5px;
+            padding: 5px;
+        }
+        </style>
     
     
 </head>
@@ -124,7 +126,7 @@
         </ul>
       </li>
       <li><a href="#">Dịch vụ</a></li>
-      <li><a href="#">Blog - Tin tức</a></li>
+      <li><a href="../../TinTuc.aspx">Blog - Tin tức</a></li>
       <li class="auto-style12"><a href="#">Hỗ trợ - Liên hệ</a></li>
         
         
@@ -164,18 +166,35 @@
           
       </div>
       <div class="Danhsacha">
-        <div class="tieude"><i class="fa fa-bars" aria-hidden="true"></i><span>Tin tức nổi bật</span></div	>
+        <div class="tieude"><i class="fa fa-bars" aria-hidden="true"></i><span>Tin tức mới nhất</span></div	>
         
             <div class="tintuc">
             	
-                <table style="width:100%;">
-                    <tr>
-                        <td class="auto-style13">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style13">&nbsp;</td>
-                    </tr>
-                </table>
+                
+            	
+                <asp:DataList ID="DataList2" runat="server" DataKeyField="MaBlog" DataSourceID="SqlDataSource3">
+                    <ItemTemplate>
+                        <div class="auto-style43">
+                            <div>
+                                <a href='<%# Eval("MaBlog","ChiTietTinTuc.aspx?MaBlog={0}") %>'>
+                                <asp:Image ID="Image1" runat="server" CssClass="anh" Height="151px" ImageAlign="Middle" ImageUrl='<%# "~/Anh/Blog/"+"/"+Eval("HinhAnh") %>' style="margin-right: 0" Width="216px" />
+                                </a>
+                            </div>
+                            <div class="kc">
+                                <strong>
+                                <asp:HyperLink ID="HyperLink1" runat="server" CssClass="Link" NavigateUrl='<%# Eval("MaBlog","ChiTietTinTuc.aspx?MaBlog={0}") %>' style="color: #009900" Text='<%# Eval("TieuDe") %>'></asp:HyperLink>
+                                </strong>
+                            </div>
+                            <div class="kc">
+                                <asp:HyperLink ID="HyperLink2" runat="server" CssClass="Link" NavigateUrl='<%# Eval("MaBlog","ChiTietTinTuc.aspx?MaBlog={0}") %>' style="color: #999999; font-size: small" Text='<%# Eval("TTND") %>'></asp:HyperLink>
+                            </div>
+                        </div>
+                        <br />
+                    </ItemTemplate>
+                </asp:DataList>
+                <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:WebBanCayCanhConnectionString %>" SelectCommand="SELECT top(2) [MaBlog], [HinhAnh], [NgayDang],[TieuDe], [TTND] FROM [BLOG] order by [NgayDang] desc"></asp:SqlDataSource>
+            	
+                
             	
             </div>
           

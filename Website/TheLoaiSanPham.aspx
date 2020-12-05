@@ -14,33 +14,31 @@
                 </SelectParameters>
             </asp:SqlDataSource>
         </div>
-    <asp:DataList ID="DataList1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSource1" GridLines="Both" RepeatColumns="4" Width="332px">
+    <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1" RepeatColumns="4" Width="332px">
         
-        <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
-        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
-        <ItemStyle BackColor="White" ForeColor="#330099" />
         <ItemTemplate>
-            <table style="width:255px; height: 166px;">
-                <tr>
-                    <td rowspan="3">
-                        <asp:Image ID="Image1" runat="server" Height="139px" ImageUrl='<%# "~/Anh/CayCanh/"+Eval("TenLoaiSP") +"/"+Eval("HinhAnh") %>' Width="100px" CssClass="anh" />
-                    </td>
-                    <td>
-                        <asp:HyperLink ID="HyperLink1" runat="server" CssClass="tenSP" NavigateUrl='<%# Eval("MaSP","ChiTietSanPham.aspx?MaSP={0}") %>' Text='<%# Eval("TenSP") %>'></asp:HyperLink>
-                    </td>
-                </tr>
-                <tr>
-                    <td><strong>Giá:</strong><asp:Label ID="TienSPLabel" runat="server" Text='<%# Eval("TienSP") %>' style="color: #FF0000" />
-                        <span style="color: #FF0000">VNĐ</span></td>
-                </tr>
-                <tr>
-                    <td style="text-align: center">
-                        <asp:HyperLink ID="HyperLink2" runat="server" CssClass="btnDat" Font-Underline="false" NavigateUrl='<%# "~/GioHang.aspx?MSP="+Eval("MaSP") %>'>Đặt Mua</asp:HyperLink>
-                    </td>
-                </tr>
-            </table>
+            <div class="blognd">
+                <table style="width:255px; height: 166px;">
+                    <tr>
+                        <td rowspan="3">
+                            <asp:Image ID="Image1" runat="server" CssClass="anh" Height="139px" ImageUrl='<%# "~/Anh/CayCanh/"+Eval("TenLoaiSP") +"/"+Eval("HinhAnh") %>' Width="100px" />
+                        </td>
+                        <td>
+                            <asp:HyperLink ID="HyperLink1" runat="server" CssClass="tenSP" NavigateUrl='<%# Eval("MaSP","ChiTietSanPham.aspx?MaSP={0}") %>' Text='<%# Eval("TenSP") %>'></asp:HyperLink>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Giá:</strong><asp:Label ID="TienSPLabel" runat="server" style="color: #FF0000" Text='<%# Eval("TienSP") %>' />
+                            <span style="color: #FF0000">VNĐ</span></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">
+                            <asp:HyperLink ID="HyperLink2" runat="server" CssClass="btnDat" Font-Underline="false" NavigateUrl='<%# "~/GioHang.aspx?MSP="+Eval("MaSP") %>'>Đặt Mua</asp:HyperLink>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </ItemTemplate>
-        <SelectedItemStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399" />
     </asp:DataList>
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:WebBanCayCanhConnectionString %>" SelectCommand="SELECT LOAISANPHAM.TenLoaiSP, SANPHAM.TenSP, SANPHAM.HinhAnh, SANPHAM.TienSP, SANPHAM.MaSP, LOAISANPHAM.MaLoaiSP FROM LOAISANPHAM INNER JOIN SANPHAM ON LOAISANPHAM.MaLoaiSP = SANPHAM.MaLoaiSP WHERE (LOAISANPHAM.MaLoaiSP = @MaLoaiSP)">
     <SelectParameters>

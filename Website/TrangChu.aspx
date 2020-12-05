@@ -9,6 +9,7 @@
         <asp:DataList ID="DataList2" runat="server" DataSourceID="SqlDataSource2" RepeatColumns="6">
             
             <ItemTemplate>
+                
                 <table class="auto-style3">
                     <tr>
                         <td style="text-align: center">
@@ -29,7 +30,8 @@
                             <span style="color: #FF0000">VNĐ</span><br /></td>
                     </tr>
                 </table>
-                <br />
+                
+
             </ItemTemplate>
             
         </asp:DataList>

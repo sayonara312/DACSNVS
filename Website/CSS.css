@@ -301,4 +301,49 @@ td.giohang:hover .minicart{
     {
         transform:scale(1.1);
     }
+.blognd {
+    width: 235px;
+    margin: 5px;
+    padding: 5px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
+.blogmenu {
+    width: 235px;
+    margin: 5px;
+    padding: 5px;
+    
+    
+}
+.Link {
+    list-style: none;
+    text-decoration: none;
+    
+}
+.kc
+{
+    height:60px;
+}
+.ndbl {
+    margin: 10px;
+    border-radius: 5px;
+    padding: 20px;
+    width: 970px;
+    background-color: #eff1f3;
+    border-style: solid;
+    border-color:rgba(0, 0, 0, 0.19);
+    border-width: thin;
+}
+.binhluannoidung
+{
+    margin:10px;
+}
+.phantrang
+{
+    text-align:center;
+}
+.ndtintuc
+{
+    padding:10px;
+}

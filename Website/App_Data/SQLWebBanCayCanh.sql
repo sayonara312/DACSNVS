@@ -31,6 +31,16 @@ CREATE TABLE SANPHAM(
 	Mota Ntext 
 );
 
+Create table BinhLuanSP
+(
+	MaBL int identity(1,1) not null primary key(MaBL),
+	MaSP varchar(10) not null,
+	NguoiBL nvarchar(50),
+	NgayBL datetime,
+	NoiDungBL ntext,
+	
+)
+
 Create table MENU
 (
 	ParentID int  not null primary key (ParentID),
@@ -54,11 +64,42 @@ Create table ADMIN
 	MatKhau varchar(20) not null
 )
 
+create table BLOG
+(
+	MaBlog int identity(1,1) not null primary key (MaBlog),
+	HinhAnh nvarchar(50),
+	TieuDe nvarchar(200),
+	TTND nvarchar(200),
+	NoiDung ntext,
+
+	NgayDang datetime,
+	NguoiDang nvarchar(30)
+
+)
+Create table BinhLuanBlog
+(
+	MaBLB int identity(1,1) primary key(MaBLB),
+	MaBlog int not null,
+	NguoiBL nvarchar(50),
+	NgayBL datetime,
+	NoiDungBL ntext,
+	
+)
+
 alter table SUBMENU
-add constraint FK_SUBMENU_MENU foreign key (ParentID) references MENU(ParentID)
+add constraint FK_SUBMENU_MENU foreign key (ParentID) references MENU(ParentID) 
 
 alter table SANPHAM
 add constraint FK_SANPHAM_LOAISP  foreign key (MaLoaiSP) references LOAISANPHAM(MaLoaiSP)
+
+alter table BinhLuanSP
+add constraint FK_BinhLuan foreign key (MaSP) references SanPham(MaSP) on delete cascade 
+
+alter table BinhLuanBlog
+add constraint FK_BinhLuanBlog foreign key (MaBLog) references Blog(MaBlog) on delete cascade 
+
+
+
 
 insert into ADMIN values(1,'admin','1')
 
@@ -186,21 +227,31 @@ insert into SANPHAM values('SP40','LSP08',N'Trứng Chim',32,'trungchim.jpg',N'L
 
 
 
-/*
+
 --Insert table BLOG
-insert into BLOG values(N'1',N'Thiết kế thi công cảnh quan cây xanh ban công nhà chung cư !',N'Việc thiết kế trang trí cảnh quan cây xanh ban công nhà chung cư đang trở nên rất phổ biến…','11/2/2020','Admin')
-insert into BLOG values(N'2',N'Kỹ thuật trồng và chăm sóc cây mai vạn phúc luôn xanh tốt',N'Cây mai vạn phúc khá quen thuộc trong cuộc sống hàng ngày. Chúng thường được trồng thành bụi, khóm để…','11/2/2020','Admin')
-insert into BLOG values(N'3',N'Trang trí ban công bằng cây hoa sam nhật thật đẹp',N'Nhiều người đang tìm hiểu về cây hoa sam Nhật có hình dáng, đặc thù như thế nào? Hãy tham…','12/2/2020','Admin')
-insert into BLOG values(N'4',N'Vẽ đẹp của cây hoa sim tím như cái tên của bài hát',N'Cây hoa sim tím đã đi vào lòng người ngày thì thuở nao, các nhà thơ, nhạc sĩ đã lấy…','11/2/2020','Admin')
-insert into BLOG values(N'5',N'Hoa hồng trứng đang rất được săn đón hợp với ban công ngôi nhà ',N'Khi nói đến loài hoa hồng trứng thì chúng ta có thấy xa lạ với cái tên gọi này không?…','11/2/2020','Admin')
-insert into BLOG values(N'6',N'Cây hoa ngũ sắc làm cảnh quan, trang trí sân vườn thật nổi bật',N'Thế giới Cây và Hoa đang là nơi bán cây hoa ngũ sắc làm cảnh quan uy tín nhất tại…','11/2/2020','Admin')
-insert into BLOG values(N'7',N'Cây mai hoàng yến nở vàng rực trong khu vườn nhà bạn',N'Bán cây mai hoàng yến đẹp sử dụng để trang trí cho mọi không gian, đang được thị trường ưa…','11/2/2020','Admin')
-insert into BLOG values(N'8',N'Cây hoa tử đằng loài cây dây leo nở hoa đẹp, cho mùa hè thêm mát',N'Nhắc đến hoa tử đằng thì người ta nhớ đến đất nước Nhật Bản, thế nhưng cây hoa tử đằng…','11/2/2020','Admin')
-insert into BLOG values(N'9',N'Hướng dẫn trồng và chăm sóc cây cà gai leo năng suất cao',N'Trên thực tế, chúng ta nghe đến cái tên cà gai leo rất nhiều. Cây cà gai leo là một…','11/2/2020','Admin')
-insert into BLOG values(N'10',N'Ý nghĩa và tác dụng tuyệt vời của cây cần thăng là gì ?',N'Cây cần thăng, tên khoa học là Feoniella lucida, là một loài cây lấy gỗ lớn, nếu sống trong tự…','11/2/2020','Admin')
-insert into BLOG values(N'11',N'Cây hạnh phúc – Làm xao xuyến trái tim bao người',N'Cuộc sống hiện đại khiến con người ta ngày càng bận rộn và luôn bị cuốn vào vòng xoay công…','11/2/2020','Admin')
-insert into BLOG values(N'12',N'Cây thiên môn đông dùng trang trí nội thất gia đình !',N'Vừa nhắc đến cái tên cây thiên môn đông thì chúng ta đã nghĩ ngay ra đây là một cây…','11/2/2020','Admin')
-*/
+insert into BLOG values('kimngan.jpg',N'Thiết kế thi công cảnh quan cây xanh ban công nhà chung cư !',N'Việc thiết kế trang trí cảnh quan cây xanh ban công nhà chung cư đang trở nên rất phổ biến…',N'ND1','11/2/2020','Admin')
+insert into BLOG values('xuongrong.jpg',N'Kỹ thuật trồng và chăm sóc cây mai vạn phúc luôn xanh tốt',N'Cây mai vạn phúc khá quen thuộc trong cuộc sống hàng ngày. Chúng thường được trồng thành bụi, khóm để…',N'ND2','11/2/2020','Admin')
+insert into BLOG values('thanhson.jpg',N'Trang trí ban công bằng cây hoa sam nhật thật đẹp',N'Nhiều người đang tìm hiểu về cây hoa sam Nhật có hình dáng, đặc thù như thế nào? Hãy tham…',N'ND3','12/2/2020','Admin')
+insert into BLOG values('sandanau.jpg',N'Vẽ đẹp của cây hoa sim tím như cái tên của bài hát',N'Cây hoa sim tím đã đi vào lòng người ngày thì thuở nao, các nhà thơ, nhạc sĩ đã lấy…',N'ND4','11/2/2020','Admin')
+insert into BLOG values('kimtien.jpg',N'Hoa hồng trứng đang rất được săn đón hợp với ban công ngôi nhà ',N'Khi nói đến loài hoa hồng trứng thì chúng ta có thấy xa lạ với cái tên gọi này không?…',N'ND5','11/2/2020','Admin')
+insert into BLOG values('taitho.jpg',N'Cây hoa ngũ sắc làm cảnh quan, trang trí sân vườn thật nổi bật',N'Thế giới Cây và Hoa đang là nơi bán cây hoa ngũ sắc làm cảnh quan uy tín nhất tại…',N'ND6','11/2/2020','Admin')
+insert into BLOG values('kimngan.jpg',N'Cây mai hoàng yến nở vàng rực trong khu vườn nhà bạn',N'Bán cây mai hoàng yến đẹp sử dụng để trang trí cho mọi không gian, đang được thị trường ưa…',N'ND7','11/2/2020','Admin')
+insert into BLOG values('ngugia.jpg',N'Cây hoa tử đằng loài cây dây leo nở hoa đẹp, cho mùa hè thêm mát',N'Nhắc đến hoa tử đằng thì người ta nhớ đến đất nước Nhật Bản, thế nhưng cây hoa tử đằng…',N'ND8','11/2/2020','Admin')
+insert into BLOG values('phuquy.jpg',N'Hướng dẫn trồng và chăm sóc cây cà gai leo năng suất cao',N'Trên thực tế, chúng ta nghe đến cái tên cà gai leo rất nhiều. Cây cà gai leo là một…',N'ND9','11/2/2020','Admin')
+insert into BLOG values('kimngan.jpg',N'Ý nghĩa và tác dụng tuyệt vời của cây cần thăng là gì ?',N'Cây cần thăng, tên khoa học là Feoniella lucida, là một loài cây lấy gỗ lớn, nếu sống trong tự…',N'ND10','11/2/2020','Admin')
+insert into BLOG values('thuylap.jpg',N'Cây hạnh phúc – Làm xao xuyến trái tim bao người',N'Cuộc sống hiện đại khiến con người ta ngày càng bận rộn và luôn bị cuốn vào vòng xoay công…',N'ND11','11/2/2020','Admin')
+insert into BLOG values('kimngan.jpg',N'Cây thiên môn đông dùng trang trí nội thất gia đình !',N'Vừa nhắc đến cái tên cây thiên môn đông thì chúng ta đã nghĩ ngay ra đây là một cây…',N'ND12','11/2/2020','Admin')
+
+insert into BinhLuanSP values ('SP01',N'John Wick','3/12/2020',N'Where is my dog?')
+insert into BinhLuanSP values('SP01',N'Tèo','5/12/2020',N'My Home')
+insert into BinhLuanSP values ('SP02',N'John Wick','3/12/2020',N'Where is my dog?')
+
+
+insert into BinhLuanBlog values (1,N'John Wick','3/12/2020',N'Where is my dog?')
+insert into BinhLuanBlog values (1,N'Tèo','5/12/2020',N'My Home')
+insert into BinhLuanBlog values (2,N'John Wick','3/12/2020',N'Where is my dog?')
+
+
 
 SELECT LOAISANPHAM.TenLoaiSP, SANPHAM.TenSP, SANPHAM.HinhAnh, SANPHAM.TienSP, SANPHAM.MaSP, LOAISANPHAM.MaLoaiSP 
 FROM LOAISANPHAM INNER JOIN SANPHAM ON LOAISANPHAM.MaLoaiSP = SANPHAM.MaLoaiSP
