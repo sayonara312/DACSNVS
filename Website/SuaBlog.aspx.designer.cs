@@ -10,25 +10,52 @@
 namespace Website {
     
     
-    public partial class GioHang {
+    public partial class SuaBlog {
         
         /// <summary>
-        /// lbGioHang control.
+        /// tbMaBlog control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbGioHang;
+        protected global::System.Web.UI.WebControls.TextBox tbMaBlog;
         
         /// <summary>
-        /// lbThongTinGH control.
+        /// tbTieuDe control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbThongTinGH;
+        protected global::System.Web.UI.WebControls.TextBox tbTieuDe;
+        
+        /// <summary>
+        /// tbTTND control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbTTND;
+        
+        /// <summary>
+        /// tbND control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbND;
+        
+        /// <summary>
+        /// FileUpload1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
         
         /// <summary>
         /// lbThongBao control.
@@ -40,75 +67,39 @@ namespace Website {
         protected global::System.Web.UI.WebControls.Label lbThongBao;
         
         /// <summary>
-        /// gvGioHang control.
+        /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvGioHang;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
-        /// lbTC control.
+        /// tbNguoiDang control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbTC;
+        protected global::System.Web.UI.WebControls.TextBox tbNguoiDang;
         
         /// <summary>
-        /// lbTongThanhTien control.
+        /// tbSoLanXem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbTongThanhTien;
+        protected global::System.Web.UI.WebControls.TextBox tbSoLanXem;
         
         /// <summary>
-        /// lbVND control.
+        /// btnLuu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbVND;
-        
-        /// <summary>
-        /// btnTTM control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTTM;
-        
-        /// <summary>
-        /// btnXoaGH control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnXoaGH;
-        
-        /// <summary>
-        /// btnCapNhat control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCapNhat;
-        
-        /// <summary>
-        /// btnDathang control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDathang;
+        protected global::System.Web.UI.WebControls.Button btnLuu;
     }
 }

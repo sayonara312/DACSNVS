@@ -19,7 +19,7 @@ namespace Website
             if (!IsPostBack)
             {
                 trangthu = 0;
-
+                loaddata();
                 load_data();
             }
             
@@ -36,31 +36,34 @@ namespace Website
             }
             else
             {
-                string sql = "Select MaBL,MaSP,NguoiBL,NoiDungBL from BinhLuanSP";
-                DataTable dt = XLDL.GetData(sql);
+                
                 string mablog = Request.QueryString["MaSP"].ToString();
                 string ten = tbTenNgBL.Text;
                 string nd = tbNoiDung.Text;
                 DateTime dateTime = DateTime.Now;
                 string ngay = dateTime.ToString("dd/MM/yyyy HH:mm:ss");
-                string sql1 = "Insert into BinhLuanSP values ('" + mablog + "',N'" + ten + "','" + ngay + "',N'" + nd + "')";
+                string sql1 = "Insert into BinhLuanSP values (" + mablog + ",N'" + ten + "','" + ngay + "',N'" + nd + "')";
                 XLDL.Excute(sql1);
-                Response.Redirect("~/ChiTietSanPham.aspx?MaSP='" + mablog+"'");
+                Response.Redirect("~/ChiTietSanPham.aspx?MaSP=" + mablog);
             }
 
+        }
+        public void loaddata()
+        {
+            try
+            {
 
+                string masp = Request.QueryString["MaSP"].ToString();
+                string sql = "SELECT SANPHAM.MaSP, SANPHAM.MaLoaiSP, SANPHAM.TenSP, SANPHAM.SoLuongSP, SANPHAM.HinhAnh, SANPHAM.NhaCC, SANPHAM.TienSP, SANPHAM.Mota, LOAISANPHAM.TenLoaiSP FROM SANPHAM INNER JOIN LOAISANPHAM ON SANPHAM.MaLoaiSP = LOAISANPHAM.MaLoaiSP WHERE SANPHAM.MaSP = " + masp;
+                DataList7.DataSource = XLDL.GetData(sql);
+                DataList7.DataBind();
+            }
+            catch
+            {
 
-
-
-
-
-
-
-
-
+            }
 
         }
-
         protected void Button2_Click(object sender, EventArgs e)
         {
             trangthu = 0;
@@ -70,12 +73,13 @@ namespace Website
         public void load_data()
         {
 
-            
+            try
+            {
                 string mablog = Request.QueryString["MaSP"].ToString();
-                string sql = "select  MaBL,MaSP,NguoiBL,NgayBL,NoiDungBL from BinhLuanSP where MaSP='" + mablog + "' order by NgayBL desc";
-
+                string sql = "select MaSP,NguoiBL,NgayBL,NoiDungBL from BinhLuanSP  where MaSP=" + mablog + " order by NgayBL desc";
 
                 p.DataSource = XLDL.GetData(sql).DefaultView;
+
 
                 p.PageSize = 5;
 
@@ -129,8 +133,12 @@ namespace Website
                 DataList4.DataSource = p;
 
                 DataList4.DataBind();
-            
-            
+            }
+            catch
+            {
+                Response.Redirect("~/TrangChu.aspx");
+            }
+
 
 
 

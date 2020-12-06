@@ -106,13 +106,11 @@
         
 <ul>
      <li><a href="../../TrangChu.aspx">Trang Chủ</a></li>
-      <li><a href="#">Giới thiệu</a></li>
+      <li><a href="../../GioiThieu.aspx">Giới thiệu</a></li>
       <li><a href="#">Cây cảnh</a>
         <ul class="submenu">
-            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:WebBanCayCanhConnectionString %>" SelectCommand="SELECT [TenLoaiSP], [MaLoaiSP] FROM [LOAISANPHAM]">
-              </asp:SqlDataSource>
-              
-            <asp:DataList ID="DataList1" runat="server" CellPadding="4" DataSourceID="SqlDataSource1" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" ForeColor="#4B4B4B" ShowFooter="False" ShowHeader="False">
+
+            <asp:DataList ID="DataList1" runat="server" CellPadding="4"  Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" ForeColor="#4B4B4B" ShowFooter="False" ShowHeader="False">
                 <AlternatingItemStyle BackColor="White" />
                 <ItemStyle BackColor="#bade8f" />
                 <ItemTemplate>
@@ -125,9 +123,9 @@
           
         </ul>
       </li>
-      <li><a href="#">Dịch vụ</a></li>
+      
       <li><a href="../../TinTuc.aspx">Blog - Tin tức</a></li>
-      <li class="auto-style12"><a href="#">Hỗ trợ - Liên hệ</a></li>
+      <li class="auto-style12"><a href="../../HoTroLienHe.aspx">Hỗ trợ - Liên hệ</a></li>
         
         
         
@@ -147,9 +145,7 @@
                   <div class="dropdown-container">
                         
 
-                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:WebBanCayCanhConnectionString %>" SelectCommand="SELECT [TenLoaiSP], [MaLoaiSP] FROM [LOAISANPHAM]"></asp:SqlDataSource>
-
-                  <asp:DataList ID="Danhmuc" runat="server" CellPadding="4" DataSourceID="SqlDataSource1" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" ForeColor="#4B4B4B" ShowFooter="False" ShowHeader="False" Width="243px" CssClass="Danhsachsp">
+                  <asp:DataList ID="Danhmuc" runat="server" CellPadding="4" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" ForeColor="#4B4B4B" ShowFooter="False" ShowHeader="False" Width="243px" CssClass="Danhsachsp">
                       <AlternatingItemStyle BackColor="White" />
 
                       <ItemStyle BackColor="#bade8f" />
@@ -172,7 +168,7 @@
             	
                 
             	
-                <asp:DataList ID="DataList2" runat="server" DataKeyField="MaBlog" DataSourceID="SqlDataSource3">
+                <asp:DataList ID="DataList2" runat="server" DataKeyField="MaBlog">
                     <ItemTemplate>
                         <div class="auto-style43">
                             <div>
@@ -192,7 +188,6 @@
                         <br />
                     </ItemTemplate>
                 </asp:DataList>
-                <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:WebBanCayCanhConnectionString %>" SelectCommand="SELECT top(2) [MaBlog], [HinhAnh], [NgayDang],[TieuDe], [TTND] FROM [BLOG] order by [NgayDang] desc"></asp:SqlDataSource>
             	
                 
             	

@@ -24,9 +24,9 @@
         <asp:QueryStringParameter Name="MaSP" QueryStringField="MaSP" Type="String" />
     </SelectParameters>
 </asp:SqlDataSource>
-<asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1" DataKeyField="MaSP">
+<asp:DataList ID="DataList7" runat="server" DataKeyField="MaSP">
     <ItemTemplate>
-        <div >
+        <div class="ndtintuc">
             <table style="width:100%;">
                 <tr>
                     <td class="auto-style1" rowspan="3">&nbsp;<asp:Image ID="Image1" runat="server" CssClass="anh" Height="168px" ImageUrl='<%# "~/Anh/CayCanh/"+Eval("TenLoaiSP")+"/"+Eval("HinhAnh") %>' Width="116px" />
@@ -53,7 +53,7 @@
                 <tr>
                     <td colspan="2">
                         <br />
-                        &nbsp;Mô tả</td>
+                        &nbsp;<strong>Mô tả</strong></td>
                 </tr>
                 <tr>
                     <td class="auto-style2" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;

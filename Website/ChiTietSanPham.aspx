@@ -1,7 +1,50 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Template.Master" AutoEventWireup="true" CodeBehind="ChiTietSanPham.aspx.cs" Inherits="Website.ChiTietSanPham" %>
 <%@ Register src="ChiTietSanPham.ascx" tagname="ChiTietSanPham" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <uc1:ChiTietSanPham ID="ChiTietSanPham1" runat="server" />
+    <asp:DataList ID="DataList7" runat="server" DataKeyField="MaSP">
+    <ItemTemplate>
+        <div class="ndtintuc">
+            <table style="width:100%;">
+                <tr>
+                    <td class="auto-style1" rowspan="3" style="width: 122px">&nbsp;<asp:Image ID="Image1" runat="server" CssClass="anh" Height="168px" ImageUrl='<%# "~/Anh/CayCanh/"+Eval("TenLoaiSP")+"/"+Eval("HinhAnh") %>' Width="116px" />
+                    </td>
+                    <td>Tên SP: <strong>
+                        <asp:Label ID="TenSPLabel" runat="server" CssClass="auto-style4" Text='<%# Eval("TenSP") %>' />
+                        </strong>
+                        <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br />
+                        Đơn Giá:
+                        <asp:Label ID="TienSPLabel" runat="server" CssClass="auto-style5" Text='<%# Eval("TienSP") %>' />
+                        <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">
+                        <asp:HyperLink ID="HyperLink1" runat="server" CssClass="btnDat" Font-Underline="false" NavigateUrl='<%# "~/GioHang.aspx?MSP="+Eval("MaSP") %>'>Đặt Mua</asp:HyperLink>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <br />
+                        &nbsp;<strong>Mô tả</strong></td>
+                </tr>
+                <tr>
+                    <td class="auto-style2" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Label ID="MotaLabel" runat="server" Text='<%# Eval("Mota").ToString().Replace("\n","<br>") %>' />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+    </ItemTemplate>
+</asp:DataList>
+
+
+<br />
     <div class="Danhsachsp">
     <strong>Bình Luận</strong></div>
     <div class="binhluannoidung">

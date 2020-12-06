@@ -36,8 +36,6 @@ namespace Website
             }
                 else
             {
-                string sql = "Select MaBlog,NguoiBL,NoiDungBL from BinhLuanBlog ";
-                DataTable dt = XLDL.GetData(sql);
                 string mablog = Request.QueryString["MaBlog"].ToString();
                 string ten = tbTenNgBL.Text;
                 string nd = tbNoiDung.Text;

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Template.Master" AutoEventWireup="true" CodeBehind="TinTuc.aspx.cs" Inherits="Website.TinTuc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <asp:DataList ID="DataList2" runat="server" DataSourceID="SqlDataSource1" RepeatColumns="4" Width="367px">
+    <asp:DataList ID="DataList2" runat="server" RepeatColumns="4" Width="367px">
         
         <ItemTemplate>
             <div class="blognd">
@@ -33,5 +33,15 @@
         </ItemTemplate>
         
     </asp:DataList>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:WebBanCayCanhConnectionString %>" SelectCommand="SELECT [HinhAnh], [TieuDe], [TTND], [NgayDang], [NguoiDang], [MaBlog], [NoiDung] FROM [BLOG]"></asp:SqlDataSource>
+    <div class="phantrang">
+        <br />
+    <asp:Button ID="btnDau" runat="server" OnClick="Button2_Click" Text="Trang Đầu" Height="30px" />
+    &nbsp;<asp:Button ID="btnTruoc" runat="server" Text="Trước" Height="30px" OnClick="btnTruoc_Click" Width="50px" />
+        <asp:Label ID="tbTrang" runat="server"></asp:Label>
+    <asp:Button ID="btnSau" runat="server" Text="Sau" Height="30px" OnClick="btnSau_Click" Width="50px" />
+    &nbsp;<asp:Button ID="btnCuoi" runat="server" Text="Trang Cuối" Height="30px" OnClick="btnCuoi_Click" />
+        <br />
+        <br />
+        </div>
+    
 </asp:Content>

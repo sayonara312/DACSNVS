@@ -2,47 +2,47 @@
 <%@ Register src="SanPham.ascx" tagname="SanPham" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <div class="Danhsachsp">
-            <asp:DataList ID="DataList2" runat="server" DataKeyField="MaLoaiSP" DataSourceID="SqlDataSource2">
+            <asp:DataList ID="DataList4" runat="server">
                 <ItemTemplate>
-                    &nbsp;<asp:Label ID="TenLoaiSPLabel" runat="server" Text='<%# Eval("TenLoaiSP") %>' />
-                    <br />
+                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("TenLoaiSP") %>'></asp:Label>
                 </ItemTemplate>
             </asp:DataList>
-            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:WebBanCayCanhConnectionString %>" SelectCommand="SELECT * FROM [LOAISANPHAM] WHERE ([MaLoaiSP] = @MaLoaiSP)">
-                <SelectParameters>
-                    <asp:QueryStringParameter Name="MaLoaiSP" QueryStringField="MaLoaiSP" Type="String" />
-                </SelectParameters>
-            </asp:SqlDataSource>
         </div>
-    <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1" RepeatColumns="4" Width="332px">
-        
+    <asp:DataList ID="DataList3" runat="server" RepeatColumns="4" Width="997px">
         <ItemTemplate>
             <div class="blognd">
-                <table style="width:255px; height: 166px;">
+                <table class="auto-style3">
                     <tr>
-                        <td rowspan="3">
-                            <asp:Image ID="Image1" runat="server" CssClass="anh" Height="139px" ImageUrl='<%# "~/Anh/CayCanh/"+Eval("TenLoaiSP") +"/"+Eval("HinhAnh") %>' Width="100px" />
-                        </td>
-                        <td>
-                            <asp:HyperLink ID="HyperLink1" runat="server" CssClass="tenSP" NavigateUrl='<%# Eval("MaSP","ChiTietSanPham.aspx?MaSP={0}") %>' Text='<%# Eval("TenSP") %>'></asp:HyperLink>
+                        <td class="auto-style7" rowspan="3">
+                            <asp:Image ID="Image1" runat="server" Height="136px" ImageUrl='<%# "~/Anh/CayCanh/"+Eval("TenLoaiSP") +"/"+Eval("HinhAnh") %>' Width="100px"  />
+                           </td>
+                        <td class="auto-style12">&nbsp;<strong><asp:HyperLink ID="MaSP" runat="server" NavigateUrl='<%# "~/GioHang.aspx?MaSP="+Eval("MaSP") %>' Text='<%# Eval("MaSP") %>' Visible="False"></asp:HyperLink>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>
+                            <asp:HyperLink ID="TenSP" runat="server" Text='<%# Eval("TenSP") %>' NavigateUrl='<%# "~/ChiTietSanPham.aspx?MaSP="+Eval("MaSP") %>' CssClass="tenSP" Width="139px"></asp:HyperLink>
                         </td>
                     </tr>
                     <tr>
-                        <td><strong>Giá:</strong><asp:Label ID="TienSPLabel" runat="server" style="color: #FF0000" Text='<%# Eval("TienSP") %>' />
-                            <span style="color: #FF0000">VNĐ</span></td>
+                        <td>&nbsp; <span class="auto-style5"><strong>Giá:</strong></span>
+                            <asp:Label ID="GiaSP" runat="server" Text='<%# Eval("TienSP") %>' CssClass="auto-style11" style="color: #FF0000"></asp:Label>
+                            <span class="auto-style11" style="color: #FF0000">VNĐ</span></td>
                     </tr>
                     <tr>
-                        <td style="text-align: center">
-                            <asp:HyperLink ID="HyperLink2" runat="server" CssClass="btnDat" Font-Underline="false" NavigateUrl='<%# "~/GioHang.aspx?MSP="+Eval("MaSP") %>'>Đặt Mua</asp:HyperLink>
+                        <td class="auto-style10">
+                            <asp:HyperLink ID="HyperLink1" runat="server" CssClass="btnDat" NavigateUrl='<%# "~/GioHang.aspx?MSP="+Eval("MaSP") %>' Font-Underline="false">Đặt Mua</asp:HyperLink>
                         </td>
                     </tr>
                 </table>
             </div>
         </ItemTemplate>
     </asp:DataList>
-<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:WebBanCayCanhConnectionString %>" SelectCommand="SELECT LOAISANPHAM.TenLoaiSP, SANPHAM.TenSP, SANPHAM.HinhAnh, SANPHAM.TienSP, SANPHAM.MaSP, LOAISANPHAM.MaLoaiSP FROM LOAISANPHAM INNER JOIN SANPHAM ON LOAISANPHAM.MaLoaiSP = SANPHAM.MaLoaiSP WHERE (LOAISANPHAM.MaLoaiSP = @MaLoaiSP)">
-    <SelectParameters>
-        <asp:QueryStringParameter Name="MaLoaiSP" QueryStringField="MaLoaiSP" />
-    </SelectParameters>
-</asp:SqlDataSource>
+    <div class="phantrang">
+        <br />
+    <asp:Button ID="btnDau" runat="server" OnClick="Button2_Click" Text="Trang Đầu" Height="30px" />
+    &nbsp;<asp:Button ID="btnTruoc" runat="server" Text="Trước" Height="30px" OnClick="btnTruoc_Click" Width="50px" />
+        <asp:Label ID="tbTrang" runat="server"></asp:Label>
+    <asp:Button ID="btnSau" runat="server" Text="Sau" Height="30px" OnClick="btnSau_Click" Width="50px" />
+    &nbsp;<asp:Button ID="btnCuoi" runat="server" Text="Trang Cuối" Height="30px" OnClick="btnCuoi_Click" />
+        <br />
+        <br />
+        </div>
 </asp:Content>

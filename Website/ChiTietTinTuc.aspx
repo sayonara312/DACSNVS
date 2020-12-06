@@ -21,7 +21,7 @@
               </table>  
                     
 
-                        <asp:Label ID="NoiDungLabel" runat="server" Text='<%# Eval("NoiDung") %>' />
+                        <asp:Label ID="NoiDungLabel" runat="server" Text='<%# Eval("NoiDung").ToString().Replace("\n","<br>") %>' />
                     
             
             

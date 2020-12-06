@@ -7,13 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace Website
 {
-    public partial class ChiTietSanPham1 : System.Web.UI.UserControl
+    public partial class DonHang : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
-          
-        
     }
 }

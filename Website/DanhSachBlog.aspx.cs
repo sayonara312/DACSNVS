@@ -8,29 +8,30 @@ using System.Web.UI.WebControls;
 
 namespace Website
 {
-    public partial class QuanTri : System.Web.UI.Page
+    public partial class DanhSachBlog : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string sql = "Select MaSP,TenSP,TienSP,NgayCapNhat,SoLuongBan,SoLanXem from sanpham";
-            DataTable dt= XLDL.GetData(sql);
-            gvSP.DataSource = dt;
-            gvSP.DataBind();
+            string sql = "select MaBlog,TieuDe,TTND,NoiDung,NgayDang,SoLanXem,NguoiDang from BLOG";
+            DataTable dt = XLDL.GetData(sql);
+            gvBlog.DataSource = dt;
+            gvBlog.DataBind();
             
+
         }
 
-        protected void gvSP_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void gvBlog_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gvSP.PageIndex = e.NewPageIndex;
-            gvSP.DataBind();
+            gvBlog.PageIndex = e.NewPageIndex;
+            gvBlog.DataBind();
         }
 
         protected void btnThem_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/ThemSP.aspx");
+            Response.Redirect("~/ThemBlog.aspx");
         }
 
-        protected void gvSP_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvBlog_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Xoa")
             {
@@ -38,13 +39,13 @@ namespace Website
                 {
                     int chiso = int.Parse(e.CommandArgument.ToString());
 
-                    string ma = gvSP.Rows[chiso].Cells[0].Text;
+                    string ma = gvBlog.Rows[chiso].Cells[0].Text;
 
-                    string str = "Delete from SanPham where MaSP=" + ma ;
+                    string str = "Delete from BLog where MaBlog=" + ma;
 
                     XLDL.Excute(str);
                     Response.Write("<script>alert('Xóa Thành Công!!!');</script>");
-                    Response.Redirect("QuanTri.aspx");
+                    Response.Redirect("DanhSachBlog.aspx");
 
                 }
                 catch

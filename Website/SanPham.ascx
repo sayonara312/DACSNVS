@@ -30,7 +30,7 @@
     
     </style>
 
-<asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1" Width="240px" RepeatColumns="4" OnItemCommand="DataList1_ItemCommand">
+<asp:DataList ID="DataList5" runat="server" DataSourceID="SqlDataSource5" Width="240px" RepeatColumns="4" OnItemCommand="DataList1_ItemCommand">
     <ItemTemplate>
         <div class="blognd">
         <table class="auto-style3">
@@ -56,5 +56,5 @@
         </div>
     </ItemTemplate>
 </asp:DataList>
-<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:WebBanCayCanhConnectionString %>" SelectCommand="SELECT LOAISANPHAM.TenLoaiSP, SANPHAM.TenSP, SANPHAM.HinhAnh, SANPHAM.TienSP, SANPHAM.MaSP, LOAISANPHAM.MaLoaiSP FROM LOAISANPHAM INNER JOIN SANPHAM ON LOAISANPHAM.MaLoaiSP = SANPHAM.MaLoaiSP"></asp:SqlDataSource>
+<asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:WebBanCayCanhConnectionString %>" SelectCommand="SELECT LOAISANPHAM.TenLoaiSP, SANPHAM.TenSP, SANPHAM.HinhAnh, SANPHAM.TienSP, SANPHAM.MaSP, LOAISANPHAM.MaLoaiSP FROM LOAISANPHAM INNER JOIN SANPHAM ON LOAISANPHAM.MaLoaiSP = SANPHAM.MaLoaiSP"></asp:SqlDataSource>
 

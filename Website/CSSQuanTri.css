@@ -17,12 +17,13 @@
 .leftmenu {
     background: #343a40;
     width: 20%;
+    
     color: white;
     
 }
 .content {
     width: 80%;
-
+    
     background-color: #c2c7d0;
 }
 .leftmenu li {
@@ -57,3 +58,23 @@ ul.con {
     .btnDat:hover {
         background-color: #23923d;
     }
+.footer {
+    text-align: center;
+    
+    background-color: #28a745;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.quantri {
+    min-height: 640px;
+}
+.gvBlog {
+    white-space: nowrap;
+   
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.fixcss {
+    table-layout: fixed;
+    width:100%;
+}

@@ -40,7 +40,7 @@ namespace Website
                 if (Request.QueryString["MSP"] != null)
                 {
                     string MaSP = Request.QueryString["MSP"].ToString();
-                    DataTable dt = XL.Docbang("Select TenSP,TienSP from SANPHAM Where MaSP='" + MaSP + "'");
+                    DataTable dt = XL.Docbang("Select TenSP,TienSP from SANPHAM Where MaSP=" + MaSP );
                     string TenSP = dt.Rows[0][0].ToString();
 
                     int DonGia = int.Parse(dt.Rows[0][1].ToString());
@@ -172,7 +172,8 @@ namespace Website
 
         protected void btnCapNhat_Click(object sender, EventArgs e)
         {
-            
+                try
+            {
                 DataTable dt = (DataTable)Session["GioHang"];
                 foreach (GridViewRow r in gvGioHang.Rows)
                 {
@@ -194,6 +195,13 @@ namespace Website
                     Response.Redirect("~/GioHang.aspx");
 
                 }
+            }
+            catch
+            {
+                lbThongBao.Text = "Cập Nhật Thất Bại";
+                Response.Redirect("~/GioHang.aspx");
+            }
+               
             
             
             

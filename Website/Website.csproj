@@ -293,13 +293,19 @@
     <Content Include="ckeditor\styles.js" />
     <Content Include="ckeditor\vendor\promise.js" />
     <Content Include="CSSQuanTri.css" />
+    <Content Include="DanhSachBlog.aspx" />
+    <Content Include="DonHang.aspx" />
     <Content Include="dropdownt.js" />
     <Content Include="GioHang.aspx" />
+    <Content Include="GioiThieu.aspx" />
+    <Content Include="HoTroLienHe.aspx" />
     <Content Include="QuanTri.aspx" />
     <Content Include="SanPham.ascx" />
+    <Content Include="SuaBlog.aspx" />
     <Content Include="SuaSP.aspx" />
     <Content Include="Template.Master" />
     <Content Include="ThanhToan.aspx" />
+    <Content Include="ThemBlog.aspx" />
     <Content Include="ThemSP.aspx" />
     <Content Include="TinTuc.aspx" />
     <Content Include="XacNhanDonHang.aspx" />
@@ -329,6 +335,34 @@
     <Compile Include="ChiTietTinTuc.aspx.designer.cs">
       <DependentUpon>ChiTietTinTuc.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DanhSachBlog.aspx.cs">
+      <DependentUpon>DanhSachBlog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DanhSachBlog.aspx.designer.cs">
+      <DependentUpon>DanhSachBlog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DonHang.aspx.cs">
+      <DependentUpon>DonHang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DonHang.aspx.designer.cs">
+      <DependentUpon>DonHang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GioiThieu.aspx.cs">
+      <DependentUpon>GioiThieu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GioiThieu.aspx.designer.cs">
+      <DependentUpon>GioiThieu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HoTroLienHe.aspx.cs">
+      <DependentUpon>HoTroLienHe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HoTroLienHe.aspx.designer.cs">
+      <DependentUpon>HoTroLienHe.aspx</DependentUpon>
+    </Compile>
     <Compile Include="QuanTri.aspx.cs">
       <DependentUpon>QuanTri.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -342,6 +376,13 @@
     </Compile>
     <Compile Include="QuanTri.Master.designer.cs">
       <DependentUpon>QuanTri.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SuaBlog.aspx.cs">
+      <DependentUpon>SuaBlog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuaBlog.aspx.designer.cs">
+      <DependentUpon>SuaBlog.aspx</DependentUpon>
     </Compile>
     <Compile Include="SuaSP.aspx.cs">
       <DependentUpon>SuaSP.aspx</DependentUpon>
@@ -363,6 +404,13 @@
     </Compile>
     <Compile Include="TheLoaiSanPham.aspx.designer.cs">
       <DependentUpon>TheLoaiSanPham.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ThemBlog.aspx.cs">
+      <DependentUpon>ThemBlog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ThemBlog.aspx.designer.cs">
+      <DependentUpon>ThemBlog.aspx</DependentUpon>
     </Compile>
     <Compile Include="ThemSP.aspx.cs">
       <DependentUpon>ThemSP.aspx</DependentUpon>

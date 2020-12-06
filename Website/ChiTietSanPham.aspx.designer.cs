@@ -13,13 +13,13 @@ namespace Website {
     public partial class ChiTietSanPham {
         
         /// <summary>
-        /// ChiTietSanPham1 control.
+        /// DataList7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Website.ChiTietSanPham1 ChiTietSanPham1;
+        protected global::System.Web.UI.WebControls.DataList DataList7;
         
         /// <summary>
         /// Label1 control.

@@ -10,24 +10,24 @@
 namespace Website {
     
     
-    public partial class ChiTietSanPham1 {
+    public partial class DanhSachBlog {
         
         /// <summary>
-        /// SqlDataSource1 control.
+        /// btnThem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.Button btnThem;
         
         /// <summary>
-        /// DataList7 control.
+        /// gvBlog control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList DataList7;
+        protected global::System.Web.UI.WebControls.GridView gvBlog;
     }
 }

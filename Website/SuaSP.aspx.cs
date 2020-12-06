@@ -49,7 +49,7 @@ namespace Website
 
 
 
-                lbNgayCapNhat.Text = dt.Rows[0]["NgayCapNhat"].ToString();
+                
 
                 tbSoLuong.Text = dt.Rows[0]["SoLuongSP"].ToString();
                 tbSoLuongBan.Text = dt.Rows[0]["SoLuongBan"].ToString();
@@ -105,27 +105,23 @@ namespace Website
         protected void btnCapNhat_Click(object sender, EventArgs e)
         {
 
-            try
-            {
+            
                 string malsp = rdlMaLoaiSP.SelectedValue.ToString();
                 string msp = Request.QueryString["Ma"].ToString();
-                string ngaycapnhat = Calendar1.SelectedDate.ToShortDateString();
-                string slb = tbSoLuongBan.Text;
-                string slx = tbSoLanXem.Text;
+                DateTime datetime = DateTime.Now;
+                string ngaycapnhat = datetime.ToShortDateString();
+                int slb = int.Parse(tbSoLuongBan.Text);
+                int slx = int.Parse(tbSoLanXem.Text);
                 string tensp = tbTenSP.Text;
                 string ncc = tbNCC.Text;
-                string sl = tbSoLuong.Text;
+                int sl = int.Parse(tbSoLuong.Text);
                 string mt = tbMoTa.Text;
                 int dg = int.Parse(tbDonGia.Text);
-                string sql = "update SanPham set MaLoaiSP='" + malsp + "',TenSP=N'" + tensp + "',SoLuongSP=" +sl + ",NhaCC=N'" + ncc + "',TienSP=" + dg + ",SoLuongBan=" +slb + ",SoLanXem=" + slx + ",Mota=N'" + mt + "' where MaSP='"+msp+"'";
+                string sql = "update SanPham set MaLoaiSP=" + malsp + ",TenSP=N'" + tensp + "',SoLuongSP=" +sl + ",NhaCC=N'" + ncc + "',TienSP=" + dg + ",NgayCapNhat='"+ngaycapnhat+"',SoLuongBan=" +slb + ",SoLanXem=" + slx + ",Mota=N'" + mt + "' where MaSP="+msp;
                 XLDL.Excute(sql);
                 
                 Response.Redirect("QuanTri.Aspx");
-            }
-              catch
-            {
-                Response.Write("<script>alert('Cập Nhật Thất Bai !!!');</script>");
-            }
+            
                
             
             

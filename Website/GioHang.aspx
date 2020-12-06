@@ -10,6 +10,8 @@
         <tr >
             <td  colspan="3" style="text-align: center; font-size: xx-large; height: 70px;">
                 <asp:Label ID="lbThongTinGH" runat="server" Font-Bold="True" Text="THÔNG TIN GIỎ HÀNG"></asp:Label>
+                <br />
+                <asp:Label ID="lbThongBao" runat="server" style="font-size: medium; color: #FF0000"></asp:Label>
             </td>
             <td style="width: 309px; height: 70px;"></td>
         </tr>
